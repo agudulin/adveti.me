@@ -1,0 +1,30 @@
+@media screen {
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.main {
+  text-align: center;
+  background: deepskyblue;
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 2 0px; }
+  .main    { order: 2; }
+  .footer  { order: 4; }
+}

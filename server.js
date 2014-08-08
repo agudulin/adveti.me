@@ -1,4 +1,7 @@
 var express = require('express');
+var path = require('path');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cheerio = require('cheerio');
 var request = require('request');
@@ -8,6 +11,11 @@ var async = require('async');
 var app = express();
 
 app.use(bodyParser());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 var port = process.env.PORT || 8080;
 
@@ -18,17 +26,11 @@ var Show = require('./app/models/show');
 
 var router = express.Router();
 
-// middleware to use for all requests
-router.use(function(req, res, next) {
-  console.log(req.method + " " + req.url);
-  next();
-});
-
-router.get('/', function(req, res) {
+router.get('/api', function(req, res) {
   res.json({ message: 'hooray! welcome to our api!' }); 
 });
 
-router.route('/show')
+router.route('/api/show')
   .post(function(req, res) {
     var show = new Show();
     console.log(req.body);
@@ -52,7 +54,7 @@ router.route('/show')
   });
 
 // ----------------------------------------------------
-router.route('/show/:show_id')
+router.route('/api/show/:show_id')
   .get(function(req, res) {
     Show.findById(req.params.show_id, function(err, show) {
       if (err) {
@@ -94,7 +96,7 @@ router.route('/show/:show_id')
 
 // -------------------------------------------------
 
-router.route('/show/:show_id/episodes')
+router.route('/api/show/:show_id/episodes')
   .post(function(req, res) {
     Show.findById(req.params.show_id, function(err, show) {
       if (err) {
@@ -123,7 +125,7 @@ router.route('/show/:show_id/episodes')
 //
 //
 //
-router.route('/grab')
+router.route('/api/grab')
   .post(function(req, res, next) {
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;
@@ -203,7 +205,7 @@ router.route('/grab')
 
 
 // REGISTER ROUTES
-app.use('/api', router);
+app.use('/', router);
 
 app.listen(port);
 console.log('>> wtf has started at ' + port);
