@@ -8,16 +8,30 @@
 
     <link href="/stylesheets/normalize.css" rel="stylesheet">
     <link href="/stylesheets/main.css" rel="stylesheet">
+
+    <script src="/javascripts/vendor/jquery-2.1.1.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <header class="header">Adventure Time</header>
 
       <article class="main">
-      Hello Woo
+        <ul class="seasons-navbar">
+          <li><button class="btn" type="button" data-season="1">Season 1</button></li>
+          <li><button class="btn" type="button" data-season="2">Season 2</button></li>
+          <li><button class="btn" type="button" data-season="3">Season 3</button></li>
+          <li><button class="btn" type="button" data-season="4">Season 4</button></li>
+          <li><button class="btn" type="button" data-season="5">Season 5</button></li>
+          <li><button class="btn" type="button" data-season="6">Season 6</button></li>
+        </ul>
+
+        <ul class="episodes-navbar"></ul>
       </article>
 
       <footer class="footer"></footer>
     </div>
+
+    <!-- app scripts -->
+    <script src="/javascripts/main.js"></script>
   </body>
 </html>

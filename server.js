@@ -96,30 +96,18 @@ router.route('/api/show/:show_id')
 
 // -------------------------------------------------
 
-router.route('/api/show/:show_id/episodes')
-  .post(function(req, res) {
+router.route('/api/show/:show_id/:season/episodes')
+  .get(function(req, res) {
+    console.log(req.params);
     Show.findById(req.params.show_id, function(err, show) {
-      if (err) {
-        res.send(err);
-      }
-
-      show.episodes = JSON.parse("" + req.body.episodes);
-
-      show.save(function(err) {
         if (err) {
           res.send(err);
         }
-        res.json({ message: 'New episodes added!' });
+        var filteredEpisodes = show.episodes.filter(function(episode){
+          return episode.season == req.params.season;
+        });
+        res.json(filteredEpisodes);
       });
-    });
-  })
-  .get(function(req, res) {
-    Show.findById(req.params.show_id, function(err, show) {
-      if (err) {
-        res.send(err);
-      }
-      res.json(show.episodes);
-    });
   });
 
 //
