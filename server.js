@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 
 var mongoose   = require('mongoose');
 // connect to database
