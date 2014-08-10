@@ -8,6 +8,7 @@
 
     <link href="/stylesheets/normalize.css" rel="stylesheet">
     <link href="/stylesheets/main.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Mono&amp;subset=latin,cyrillic" rel="stylesheet">
 
     <script src="/javascripts/vendor/jquery-2.1.1.js"></script>
   </head>
@@ -15,20 +16,28 @@
     <div class="wrapper">
       <header class="header">Adventure Time</header>
 
-      <article class="main">
+      <aside class="seasons-navigation">
         <ul class="seasons-navbar">
-          <li><button class="btn" type="button" data-season="1">Season 1</button></li>
-          <li><button class="btn" type="button" data-season="2">Season 2</button></li>
-          <li><button class="btn" type="button" data-season="3">Season 3</button></li>
-          <li><button class="btn" type="button" data-season="4">Season 4</button></li>
-          <li><button class="btn" type="button" data-season="5">Season 5</button></li>
-          <li><button class="btn" type="button" data-season="6">Season 6</button></li>
+          <li><a class="btn" href="#" data-season="1">Season 1</a></li>
+          <li><a class="btn" href="#" data-season="2">Season 2</a></li>
+          <li><a class="btn" href="#" data-season="3">Season 3</a></li>
+          <li><a class="btn" href="#" data-season="4">Season 4</a></li>
+          <li><a class="btn" href="#" data-season="5">Season 5</a></li>
+          <li><a class="btn" href="#" data-season="6">Season 6</a></li>
         </ul>
-
+      </aside>
+      <article class="main">
+        <p class="beemo-vision">
+          <img src="/images/beemo-vision.jpg" />
+        </p>
         <ul class="episodes-navbar"></ul>
       </article>
 
-      <footer class="footer"></footer>
+
+      <footer class="footer">
+        <p>:3</p>
+        <p>Made with all the love in the world to Sveta by <a href="https://twitter.com/agudulin">@agudulin</a>.</p>
+      </footer>
     </div>
 
     <!-- app scripts -->

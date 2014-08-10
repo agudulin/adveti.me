@@ -6,25 +6,146 @@
   }
 }
 
+body {
+  font: 1em "PT Sans", sans-serif;
+}
+
+.beemo-vision {
+  margin-right: 15px;
+  img {
+    width: 100%;
+  }
+}
+
+.header {
+  background-color: deepskyblue;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  color: white;
+  padding: 10px;
+}
+
+.episodes-navbar {
+  list-style: none;
+  font-size: 0.8em;
+  padding-left: 0;
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+.episode-name {
+  font-weight: bold;
+  margin: 5px;
+}
+
+.episode-video-link {
+  padding: 5px !important;
+  color: whitesmoke;
+  background-color: deepskyblue;
+  padding: 3px;
+  display: inline-block;
+  text-decoration: none;
+
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.footer {
+  text-align: center;
+  color: darkgray;
+
+  a {
+    color: darkgray;
+  }
+}
+
 .wrapper {
   display: flex;
   flex-flow: row wrap;
-
-  text-align: center;
 }
 
 .wrapper > * {
-  padding: 10px;
   flex: 1 100%;
 }
 
 .main {
-  text-align: center;
-  background: deepskyblue;
+  width: 100%;
 }
 
-@media all and (min-width: 800px) {
-  .main    { flex: 2 0px; }
-  .main    { order: 2; }
-  .footer  { order: 4; }
+
+.seasons-navbar {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.seasons-navbar .btn {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  font-size: 0.9em;
+
+  &:hover {
+    background-color: deepskyblue;
+    color: white;
+  }
+
+  &.active,
+  &.active:hover {
+    background-color: darken(deepskyblue, 2%);
+    color: white;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .beemo-vision {
+    margin: 0;
+  }
+  .episode-video-link {
+    display: block;
+  }
+  .main {
+    padding: 0;
+  }
+  .seasons-navbar {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0;
+    background-color: deepskyblue;
+
+    .btn {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    li:last-of-type .btn {
+      border-bottom: none;
+    }
+  }
+}
+
+@media all and (min-width: 600px) {
+  .episode-video-link {
+    margin-right: 5px;
+  }
+  .main {
+    flex: 8 0px;
+    order: 2;
+  }
+  .seasons-navigation {
+    flex: 1 20%;
+    order: 1;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .footer {
+    order: 3;
+  }
 }
