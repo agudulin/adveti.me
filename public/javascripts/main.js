@@ -3,15 +3,22 @@ $(function(){
 
   var cachedSeasonEpisodesMap = {};
   var $seasonButton = $(".btn[data-season]");
-  var $beemoVisionImgBlock = $(".beemo-vision");
+  var $bmoVisionImgBlock = $(".bmo-vision");
+  var $loadingSpinner = $(".loading");
 
   $seasonButton.on("click", function() {
+    // mark season button active
     $seasonButton.removeClass("active");
     $(this).addClass("active");
-    $beemoVisionImgBlock.hide();
+    // hide BMO-vision image because we want to show a list of episodes at this place
+    $bmoVisionImgBlock.hide();
+
     var selectedSeason = $(this).data("season");
-    var AT_EPISODES_PER_SEASON = "/api/show/" + AT_SHOW_ID + "/" + selectedSeason + "/episodes";
     if (cachedSeasonEpisodesMap[selectedSeason] === undefined) {
+      // start loading animation
+      $loadingSpinner.show();
+
+      var AT_EPISODES_PER_SEASON = "/api/show/" + AT_SHOW_ID + "/" + selectedSeason + "/episodes";
       $.ajax(AT_EPISODES_PER_SEASON)
         .done(function(data){
           cachedSeasonEpisodesMap[selectedSeason] = data;
@@ -21,7 +28,8 @@ $(function(){
           console.log("fail");
         })
         .always(function(){
-          console.log("done");
+          // stop loading animation
+          $loadingSpinner.hide();
         });
     } else {
       addEpisodesToViewport(cachedSeasonEpisodesMap[selectedSeason]);
