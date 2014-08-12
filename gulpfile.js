@@ -16,12 +16,19 @@ gulp.task('less', function() {
 
 gulp.task('watch', function() {
   gulp.watch('public/stylesheets/*.less', ['less']);
+  gulp.watch('public/javascripts/*.js', ['uglifyjs']);
+});
+
+gulp.task('vendorjs', function() {
+  gulp.src('public/javascripts/vendor/*.js')
+    .pipe(uglifyJS())
+    .pipe(gulp.dest('public/js/vendor'))
 });
 
 gulp.task('uglifyjs', function() {
-  gulp.src('public/javascripts/*/*.js')
+  gulp.src('public/javascripts/*.js')
     .pipe(uglifyJS())
     .pipe(gulp.dest('public/js'))
 });
 
-gulp.task('default', ['less', 'watch', 'uglifyjs']);
+gulp.task('default', ['less', 'watch', 'uglifyjs', 'vendorjs']);

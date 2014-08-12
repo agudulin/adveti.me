@@ -1,3 +1,5 @@
+@import "loading";
+
 @media screen {
   *,
   *::after,
@@ -10,7 +12,7 @@ body {
   font: 1em "PT Sans", sans-serif;
 }
 
-.beemo-vision {
+.bmo-vision {
   margin-right: 15px;
   img {
     width: 100%;
@@ -64,19 +66,14 @@ body {
   }
 }
 
-.wrapper {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.wrapper > * {
-  flex: 1 100%;
+.loading {
+  // don't show loading spinner by default
+  display: none;
 }
 
 .main {
   width: 100%;
 }
-
 
 .seasons-navbar {
   list-style: none;
@@ -102,8 +99,17 @@ body {
   }
 }
 
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.wrapper > * {
+  flex: 1 100%;
+}
+
 @media all and (max-width: 600px) {
-  .beemo-vision {
+  .bmo-vision {
     margin: 0;
   }
   .episode-video-link {
