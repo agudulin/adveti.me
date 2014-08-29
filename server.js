@@ -174,7 +174,7 @@ router.route('/api/grab')
             res.send(err);
           }
 
-          show.episodes = show.episodes.concat(episodes);
+          show.episodes = episodes;
           callback(err, show);
         });    
       }
