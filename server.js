@@ -46,8 +46,9 @@ router.route('/api/show')
   })
   .get(function(req, res) {
     Show.find(function(err, show) {
-      if (err)
+      if (err) {
         res.send(err);
+      }
 
       res.json(show);
     });
@@ -126,7 +127,7 @@ router.route('/api/grab')
           $ = cheerio.load(body);
           var links = $('.type_category .cell-content .wrap h4 a');
           $(links).each(function(i, link) {
-            episode = {
+            var episode = {
               season: season,
               name: $(link).text(),
               url: $(link).attr('href')
@@ -143,14 +144,14 @@ router.route('/api/grab')
           request.get(episode.url, function(error, response, body) {
             if (error) { callback(error); }
             $ = cheerio.load(body);
-            tabsContainer = $('.type_page_content .tabs_widget');
-            voiceNames = tabsContainer.find('.elem span');
-            voiceNamesArray = [];
+            var tabsContainer = $('.type_page_content .tabs_widget');
+            var voiceNames = tabsContainer.find('.elem span');
+            var voiceNamesArray = [];
             $(voiceNames).each(function(i, voiceName) {
               voiceNamesArray.push($(voiceName).text());
             });
 
-            iframes = tabsContainer.find('iframe');
+            var iframes = tabsContainer.find('iframe');
             episode.videos = [];
             $(iframes).each(function(i, iframe) {
               episode.videos.push({
@@ -173,10 +174,18 @@ router.route('/api/grab')
           if (err) {
             res.send(err);
           }
+          // find episodes from the season we want update in our db
+          // remove all old episodes and add new
+          var filteredEpisodes = show.episodes.filter(function(episode){
+            return episode.season == season;
+          });
+          filteredEpisodes.forEach(function(episode, idx) {
+            show.episodes.id(episode._id).remove();
+          });
 
-          show.episodes = episodes;
+          show.episodes = show.episodes.concat(episodes);
           callback(err, show);
-        });    
+        });
       }
     ], function(err, show) {
       if (err) return next(err);
