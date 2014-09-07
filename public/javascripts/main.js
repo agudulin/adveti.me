@@ -4,7 +4,7 @@ $(function(){
   var cachedSeasonEpisodesMap = {};
   var $seasonButton = $(".btn[data-season]");
   var $bmoVisionImgBlock = $(".bmo-vision");
-  var $loadingSpinner = $(".loading");
+  var $loadingSpinner = $("<span>").addClass("loading");
 
   $seasonButton.on("click", function() {
     // mark season button active
@@ -16,7 +16,7 @@ $(function(){
     var selectedSeason = $(this).data("season");
     if (cachedSeasonEpisodesMap[selectedSeason] === undefined) {
       // start loading animation
-      $loadingSpinner.show();
+      $(this).append($loadingSpinner);
 
       var AT_EPISODES_PER_SEASON = "/api/show/" + AT_SHOW_ID + "/" + selectedSeason + "/episodes";
       $.ajax(AT_EPISODES_PER_SEASON)
@@ -29,7 +29,7 @@ $(function(){
         })
         .always(function(){
           // stop loading animation
-          $loadingSpinner.hide();
+          $loadingSpinner.remove();
         });
     } else {
       addEpisodesToViewport(cachedSeasonEpisodesMap[selectedSeason]);
