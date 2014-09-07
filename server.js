@@ -19,9 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var port = process.env.PORT || 3000;
 
-var mongoose   = require('mongoose');
 // connect to database
-mongoose.connect('mongodb://atuser:atpass@ds053109.mongolab.com:53109/advetime');
+var mongoose = require('mongoose');
+var db = require('./conf/db.json');
+mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, db.host, db.port, db.collection));
+
 var Show = require('./app/models/show');
 
 var router = express.Router();
