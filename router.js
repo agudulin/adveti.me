@@ -1,33 +1,15 @@
+var async = require('async');
+var cheerio = require('cheerio');
 var express = require('express');
+var request = require('request');
+var util = require('util');
+
 var Show = require('./app/models/show');
+
 var router = express.Router();
 
-router.route('/api/show')
-  .post(function(req, res) {
-    var show = new Show();
-    console.log(req.body);
-    show.name = req.body.name;
-    show.episodes = JSON.parse("" + req.body.episodes);
-
-    show.save(function(err) {
-      if (err) {
-        res.send(err);
-      }
-      res.json({ message: 'Show created!' });
-    });
-  })
-  .get(function(req, res) {
-    Show.find(function(err, show) {
-      if (err) {
-        res.send(err);
-      }
-
-      res.json(show);
-    });
-  });
-
-// ----------------------------------------------------
 router.route('/api/show/:show_id')
+  // get all show information by id
   .get(function(req, res) {
     Show.findById(req.params.show_id, function(err, show) {
       if (err) {
@@ -35,58 +17,27 @@ router.route('/api/show/:show_id')
       }
       res.json(show);
     });
-  })
-  .put(function(req, res) {
-    Show.findById(req.params.show_id, function(err, show) {
-      if (err) {
-        res.send(err);
-      }
-      if (req.body.name) {
-        show.name = req.body.name;  
-      }
-      if (req.body.episodes) {
-        show.episodes = req.body.episodes;
-      }      
-      show.save(function(err) {
-        if (err) {
-          res.send(err);
-        }
-        res.json({ message: 'Show updated!' });
-      });
-    });
-  })
-  .delete(function(req, res) {
-    Show.remove({
-      _id: req.params.show_id
-    }, function(err, show) {
-      if (err) {
-        res.send(err);
-      }
-
-      res.json({ message: 'Successfully deleted' });
-    });
   });
-
-// -------------------------------------------------
 
 router.route('/api/show/:show_id/:season/episodes')
+  // get all episodes from the season
   .get(function(req, res) {
-    console.log(req.params);
     Show.findById(req.params.show_id, function(err, show) {
-        if (err) {
-          res.send(err);
-        }
-        var filteredEpisodes = show.episodes.filter(function(episode){
-          return episode.season == req.params.season;
-        });
-        res.json(filteredEpisodes);
+      if (err) {
+        res.send(err);
+      }
+      var filteredEpisodes = show.episodes.filter(function(episode){
+        return episode.season == req.params.season;
       });
+      res.json(filteredEpisodes);
+    });
   });
 
-//
-//
-//
 router.route('/api/grab')
+  // add new episodes or update existent
+  // required params:
+  //  * show id
+  //  * season number
   .post(function(req, res, next) {
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;

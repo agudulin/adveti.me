@@ -3,10 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cheerio = require('cheerio');
-var request = require('request');
 var util = require('util');
-var async = require('async');
 
 var app = express();
 
