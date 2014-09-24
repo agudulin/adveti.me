@@ -5,6 +5,7 @@ var request = require('request');
 var util = require('util');
 
 var Show = require('./app/models/show');
+var routesConfig = require('./conf/routes.json');
 
 var router = express.Router();
 
@@ -39,6 +40,14 @@ router.route('/api/grab')
   //  * show id
   //  * season number
   .post(function(req, res, next) {
+    var secretKey = req.body.secret_key;
+    if (secretKey !== routesConfig.grab.secret_key) {
+      return res.status(403).send({
+          error: true,
+          msg: 'Permission denied'
+      });
+    }
+
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;
     var episodes = [];
