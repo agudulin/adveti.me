@@ -18,11 +18,11 @@ var port = process.env.PORT || 3000;
 
 // connect to database
 var mongoose = require('mongoose');
-var db = require('./conf/db.json');
+var db = require('./app/conf/db.json');
 mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, db.host, db.port, db.collection));
 
 // register routes
-var router = require('./router');
+var router = require('./app/controllers/router');
 app.use('/', router);
 
 app.listen(port);
