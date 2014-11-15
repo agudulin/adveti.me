@@ -4,8 +4,8 @@ var express = require('express');
 var request = require('request');
 var util = require('util');
 
-var Show = require('./app/models/show');
-var routesConfig = require('./conf/routes.json');
+var Show = require('../models/show');
+var routesConfig = require('../conf/routes.json');
 
 var router = express.Router();
 
