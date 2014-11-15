@@ -30,3 +30,6 @@ node_modules
 # Secret config files
 conf/db.json
 conf/routes.json
+
+# IDEA config files
+.idea
