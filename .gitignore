@@ -28,8 +28,7 @@ node_modules
 .lock-wscript
 
 # Secret config files
-conf/db.json
-conf/routes.json
+app/conf
 
 # IDEA config files
 .idea
