@@ -6,7 +6,7 @@ var minifyCSS = require('gulp-minify-css');
 var uglifyJS = require('gulp-uglifyjs');
 
 gulp.task('less', function() {
-  gulp.src('public/stylesheets/main.less')
+  gulp.src('app/assets/stylesheets/main.less')
       .pipe(plumber())
       .pipe(less())
       .pipe(prefix({ cascade: true }))
@@ -15,20 +15,14 @@ gulp.task('less', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('public/stylesheets/*.less', ['less']);
-  gulp.watch('public/javascripts/*.js', ['uglifyjs']);
-});
-
-gulp.task('vendorjs', function() {
-  gulp.src('public/javascripts/vendor/*.js')
-    .pipe(uglifyJS())
-    .pipe(gulp.dest('public/js/vendor'))
+  gulp.watch('app/assets/stylesheets/*.less', ['less']);
+  gulp.watch('app/assets/javascript/*.js', ['uglifyjs']);
 });
 
 gulp.task('uglifyjs', function() {
-  gulp.src('public/javascripts/*.js')
+  gulp.src('app/assets/javascript/*.js')
     .pipe(uglifyJS())
-    .pipe(gulp.dest('public/js'))
+    .pipe(gulp.dest('public/javascript'))
 });
 
-gulp.task('default', ['less', 'watch', 'uglifyjs', 'vendorjs']);
+gulp.task('default', ['less', 'watch', 'uglifyjs']);
