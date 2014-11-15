@@ -4,6 +4,7 @@ $(function(){
   var cachedSeasonEpisodesMap = {};
   var $seasonButton = $(".btn[data-season]");
   var $bmoVisionImgBlock = $(".bmo-vision");
+  var $episodesNavbar = $(".episodes-navbar");
   var $loadingSpinner = $("<span>").addClass("loading");
 
   $seasonButton.on("click", function() {
@@ -36,8 +37,15 @@ $(function(){
     }
   });
 
+  var $header = $(".header");
+  $header.on("click", function() {
+    cachedSeasonEpisodesMap = {};
+    $seasonButton.removeClass("active");
+    $bmoVisionImgBlock.show();
+    $episodesNavbar.empty();
+  });
+
   var addEpisodesToViewport = function(data) {
-    var $episodesNavbar = $(".episodes-navbar");
     $episodesNavbar.empty();
 
     data.forEach(function(episode){
