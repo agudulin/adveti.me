@@ -126,9 +126,8 @@ router.route('/api/grab')
         if (err) {
           res.send(err);
         }
-        res.json({ message: 'New episodes added!' });
       });
-      res.send(200);
+      res.status(200).send({ msg: 'New episodes added!' });
     });
   });
 
