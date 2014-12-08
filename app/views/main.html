@@ -16,23 +16,9 @@
     <div class="wrapper">
       <header class="header">Adventure Time</header>
 
-      <aside class="seasons-navigation">
-        <ul class="seasons-navbar">
-          <li><a class="btn" href="#" data-season="1">Season 1</a></li>
-          <li><a class="btn" href="#" data-season="2">Season 2</a></li>
-          <li><a class="btn" href="#" data-season="3">Season 3</a></li>
-          <li><a class="btn" href="#" data-season="4">Season 4</a></li>
-          <li><a class="btn" href="#" data-season="5">Season 5</a></li>
-          <li><a class="btn" href="#" data-season="6">Season 6</a></li>
-        </ul>
-      </aside>
-      <article class="main">
-        <p class="bmo-vision">
-          <img src="/images/bmo-vision.jpg" />
-        </p>
-
-        <ul class="episodes-navbar"></ul>
-      </article>
+      {% block content %}
+      
+      {% endblock %}
 
       <footer class="footer">
         <p>:3</p>
