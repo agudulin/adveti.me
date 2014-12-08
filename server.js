@@ -43,5 +43,9 @@ mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, d
 
 require('./app/controllers/router')(app, passport);
 
-app.listen(port);
-console.log('>> wtf has started at ' + port);
+if (!module.parent) {
+  app.listen(port);
+  console.log('>> wtf has started at ' + port);
+}
+
+module.exports = app;
