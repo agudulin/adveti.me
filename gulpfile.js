@@ -4,14 +4,20 @@ var plumber = require('gulp-plumber');
 var prefix = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
 var uglifyJS = require('gulp-uglifyjs');
+var bower = require('gulp-bower');
+
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest('public/lib/'))
+});
 
 gulp.task('less', function() {
   gulp.src('app/assets/stylesheets/main.less')
-      .pipe(plumber())
-      .pipe(less())
-      .pipe(prefix({ cascade: true }))
-      .pipe(minifyCSS({ keepBreaks: false }))
-      .pipe(gulp.dest('public/stylesheets'));
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(prefix({ cascade: true }))
+    .pipe(minifyCSS({ keepBreaks: false }))
+    .pipe(gulp.dest('public/stylesheets'));
 });
 
 gulp.task('watch', function() {
@@ -25,4 +31,4 @@ gulp.task('uglifyjs', function() {
     .pipe(gulp.dest('public/javascript'))
 });
 
-gulp.task('default', ['less', 'watch', 'uglifyjs']);
+gulp.task('default', ['bower', 'less', 'watch', 'uglifyjs']);

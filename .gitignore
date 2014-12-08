@@ -32,3 +32,9 @@ app/conf
 
 # IDEA config files
 .idea
+
+# bower
+bower_components
+public/lib
+public/stylesheets
+public/javascript

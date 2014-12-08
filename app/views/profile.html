@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<article class="user-profile">
+  <a href="/logout">Logout</a>
+  <h1>{{ user.twitter.displayName }}</h1>
+  <p>
+    <strong>Username</strong>: {{ user.twitter.username }}<br>
+  </p>
+</article>
+{% endblock %}
