@@ -17,3 +17,5 @@ Prod
 ```
 $ forever start -o /var/log/at-for-pleasure.log -l /var/log/at-for-pleasure-forever.log server.js 
 ```
+
+[![Build Status](https://travis-ci.org/agudulin/at-for-pleasure.svg?branch=master)](https://travis-ci.org/agudulin/at-for-pleasure)
