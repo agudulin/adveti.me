@@ -1,6 +1,5 @@
 var TwitterStrategy  = require('passport-twitter').Strategy;
 var User = require('../models/user');
-var authConfig = require('../conf/auth.json');
 
 module.exports = function(passport) {
   // used to serialize the user for the session
@@ -16,9 +15,9 @@ module.exports = function(passport) {
   });
 
   passport.use(new TwitterStrategy({
-    consumerKey: authConfig.twitterAuth.consumerKey,
-    consumerSecret: authConfig.twitterAuth.consumerSecret,
-    callbackURL: authConfig.twitterAuth.callbackURL
+    consumerKey: process.env.AUTH_TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.AUTH_TWITTER_CONSUMER_SECRET,
+    callbackURL: process.env.AUTH_TWITTER_CALLBACK_URL
   },
   function(token, tokenSecret, profile, done) {
     // make the code asynchronous

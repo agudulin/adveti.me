@@ -28,7 +28,8 @@ node_modules
 .lock-wscript
 
 # Secret config files
-app/conf
+conf/dev.env
+conf/prod.env
 
 # IDEA config files
 .idea

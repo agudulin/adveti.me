@@ -8,10 +8,19 @@ var util = require('util');
 var swig = require('swig');
 var passport = require('passport');
 
+var env = process.env.NODE_ENV || 'dev';
 var app = express();
 
+if ('dev' == env) {
+  app.use(logger('dev'));
+}
+// Swig will cache templates for you, but you can disable
+// that and use Express's caching instead, if you like:
+app.set('view cache', 'prod' == env);
+// To disable Swig's cache, do the following:
+swig.setDefaults({ cache: 'prod' == env });
+
 app.use(bodyParser());
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
@@ -19,12 +28,6 @@ app.use(cookieParser());
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'app', 'views'));
-
-// Swig will cache templates for you, but you can disable
-// that and use Express's caching instead, if you like:
-app.set('view cache', false);
-// To disable Swig's cache, do the following:
-swig.setDefaults({ cache: false });
 
 app.use(session({
   secret: 'mathematical',
@@ -36,12 +39,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var port = process.env.PORT || 3000;
 
-// connect to database
-var mongoose = require('mongoose');
-var db = require('./app/conf/db.json');
-mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, db.host, db.port, db.collection));
-
 require('./app/controllers/router')(app, passport);
 
-app.listen(port);
-console.log('>> wtf has started at ' + port);
+if (!module.parent) {
+  // connect to database
+  var mongoose = require('mongoose');
+  var DB_USER       = process.env.DB_USER,
+      DB_HOST       = process.env.DB_HOST,
+      DB_PORT       = process.env.DB_PORT,
+      DB_PASSWORD   = process.env.DB_PASSWORD,
+      DB_COLLECTION = process.env.DB_COLLECTION;
+  mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_COLLECTION));
+
+  app.listen(port);
+  console.log('>> wtf has started at ' + port);
+}
+
+module.exports = app;
