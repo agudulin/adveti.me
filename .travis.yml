@@ -2,8 +2,3 @@ language: node_js
 node_js:
   - "0.11"
   - "0.10"
-env:
-  - NODE_ENV="test"
-  - AUTH_TWITTER_CONSUMER_KEY="testkey"
-  - AUTH_TWITTER_CONSUMER_SECRET="testsecret"
-  - AUTH_TWITTER_CALLBACK_URL="http://localhost:3000/auth/twitter/callback"
