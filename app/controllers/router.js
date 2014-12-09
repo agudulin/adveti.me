@@ -6,7 +6,6 @@ var util = require('util');
 
 var Show = require('../models/show');
 var User = require('../models/user');
-var routesConfig = require('../conf/routes.json');
 
 module.exports = function(app, passport) {
   require('./passport')(passport);

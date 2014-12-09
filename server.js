@@ -36,14 +36,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var port = process.env.PORT || 3000;
 
-// connect to database
-var mongoose = require('mongoose');
-var db = require('./app/conf/db.json');
-mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, db.host, db.port, db.collection));
-
 require('./app/controllers/router')(app, passport);
 
 if (!module.parent) {
+  // connect to database
+  var mongoose = require('mongoose');
+  var db = require('./app/conf/db.json');
+  mongoose.connect(util.format('mongodb://%s:%s@%s:%s/%s', db.user, db.password, db.host, db.port, db.collection));
+  
   app.listen(port);
   console.log('>> wtf has started at ' + port);
 }
