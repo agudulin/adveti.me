@@ -44,7 +44,7 @@ module.exports = function(app, passport) {
   // show regular user profile page
   app.get('/profile', isLoggedIn, function(req, res, next) {
     if (req.user.role == 'ADMIN') {
-      res.redirect('/admin')
+      return res.redirect('/admin')
     }
     res.render('profile', {
       user: req.user
