@@ -13,12 +13,12 @@ var app = express();
 
 if ('dev' == env) {
   app.use(logger('dev'));
+  // Disable Swig's cache, in memory in prod by default
+  swig.setDefaults({ cache: false });
 }
 // Swig will cache templates for you, but you can disable
 // that and use Express's caching instead, if you like:
 app.set('view cache', 'prod' == env);
-// To disable Swig's cache, do the following:
-swig.setDefaults({ cache: 'prod' == env });
 
 app.use(bodyParser());
 app.use(bodyParser.json());
