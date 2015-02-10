@@ -1,3 +1,4 @@
+var fs = require('fs');
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
@@ -13,29 +14,28 @@ var app = express();
 
 if ('dev' == env) {
   app.use(logger('dev'));
-  // Disable Swig's cache, in memory in prod by default
-  swig.setDefaults({ cache: false });
 }
 // Swig will cache templates for you, but you can disable
 // that and use Express's caching instead, if you like:
 app.set('view cache', 'prod' == env);
-
+app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'app', 'views'));
-
 app.use(session({
   secret: 'mathematical',
-  resave: false
+  resave: false,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.engine('html', swig.renderFile);
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'app', 'views'));
 
 var port = process.env.PORT || 3000;
 

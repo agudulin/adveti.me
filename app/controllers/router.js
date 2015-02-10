@@ -11,11 +11,7 @@ module.exports = function(app, passport) {
   require('./passport')(passport);
 
   app.get('/', function(req, res) {
-    res.render('index', {
-      show: {
-        seasons: [{num: 1}, {num: 2}, {num: 3}, {num: 4}, {num: 5}, {num: 6}]
-      }
-    });
+    res.render('index');
   });
 
   app.get('/login', function(req, res) {
@@ -81,7 +77,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  // get all episodes from the season 
+  // get all episodes from the season
   app.get('/api/show/:show_id/:season/episodes', function(req, res) {
     Show.findById(req.params.show_id, function(err, show) {
       if (err) {
@@ -102,7 +98,7 @@ module.exports = function(app, passport) {
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;
     var episodes = [];
-    
+
     async.waterfall([
       function(callback) {
         request(util.format('http://advetime.ru/category/sezon-%s', season), function(error, response, body) {
