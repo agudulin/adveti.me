@@ -4,12 +4,6 @@ var Route = Router.Route,
     DefaultRoute = Router.DefaultRoute,
     RouteHandler = Router.RouteHandler;
 
-var ProfilePageComponent = require('./ProfilePage');
-var ProfilePage = ProfilePageComponent.ProfilePage,
-    SignedIn = ProfilePageComponent.SignedIn,
-    ProfileHome = ProfilePageComponent.ProfileHome,
-    SignedOut = ProfilePageComponent.SignedOut,
-    SignIn = ProfilePageComponent.SignIn;
 var MainPageComponent = require('./MainPage');
 var MainPage = MainPageComponent.MainPage,
     Season = MainPageComponent.Season,
@@ -23,20 +17,11 @@ var App = React.createClass({
   }
 });
 
-
 var routes = (
   <Route handler={App}>
     <Route name="main" path="/" handler={MainPage}>
       <Route name="season" path="season/:season" handler={Season}/>
       <DefaultRoute handler={BmoVision}/>
-    </Route>
-    <Route name="profile" path="/profile" handler={ProfilePage}>
-      <Route handler={SignedOut}>
-        <Route name="signin" handler={SignIn}/>
-      </Route>
-      <Route handler={SignedIn}>
-        <Route name="home" handler={ProfileHome}/>
-      </Route>
     </Route>
   </Route>
 );

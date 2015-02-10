@@ -55,7 +55,7 @@ gulp.task('browserify', function(){
     .pipe(source('build.js'))
     .pipe(buffer())
     .pipe(jsx())
-    // .pipe(uglifyJS())
+    .pipe(uglifyJS())
     .pipe(gulp.dest('./public/javascript'));
 });
 
