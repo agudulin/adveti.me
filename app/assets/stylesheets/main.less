@@ -1,5 +1,4 @@
 @import "loading";
-@import "user-profile";
 
 @media screen {
   *,
@@ -34,6 +33,10 @@ body {
   &:hover {
     background-color: darken(deepskyblue, 5%);
     color: darken(white, 5%);
+  }
+  &> a {
+    text-decoration: none;
+    color: inherit;
   }
 }
 
@@ -102,7 +105,7 @@ body {
                          color 0.1s ease;
 
   &:hover {
-    background-color: deepskyblue;
+    background-color: lighten(deepskyblue, 20%);
     color: white;
     opacity: 1;
   }

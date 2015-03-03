@@ -11,11 +11,7 @@ module.exports = function(app, passport) {
   require('./passport')(passport);
 
   app.get('/', function(req, res) {
-    res.render('index', {
-      show: {
-        seasons: [{num: 1}, {num: 2}, {num: 3}, {num: 4}, {num: 5}, {num: 6}]
-      }
-    });
+    res.render('index');
   });
 
   app.get('/login', function(req, res) {
@@ -42,9 +38,9 @@ module.exports = function(app, passport) {
   }));
 
   // show regular user profile page
-  app.get('/profile', isLoggedIn, function(req, res, next) {
-    if (req.user.role == 'ADMIN') {
-      return res.redirect('/admin')
+  app.get('/profile', isLoggedIn, function (req, res, next) {
+    if (req.user.role === 'ADMIN') {
+      return res.redirect('/admin');
     }
     res.render('profile', {
       user: req.user
@@ -63,7 +59,7 @@ module.exports = function(app, passport) {
 
   // get all users
   app.get('/api/users', isLoggedInAsAdmin, function(req, res) {
-    User.find(function(err, users){
+    User.find(function(err, users) {
       if (err) {
         res.send(err);
       }
@@ -81,7 +77,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  // get all episodes from the season 
+  // get all episodes from the season
   app.get('/api/show/:show_id/:season/episodes', function(req, res) {
     Show.findById(req.params.show_id, function(err, show) {
       if (err) {
@@ -102,11 +98,13 @@ module.exports = function(app, passport) {
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;
     var episodes = [];
-    
+
     async.waterfall([
       function(callback) {
         request(util.format('http://advetime.ru/category/sezon-%s', season), function(error, response, body) {
-          if (error) return next(error);
+          if (error) {
+            return next(error);
+          }
           $ = cheerio.load(body);
           var links = $('.type_category .cell-content .wrap h4 a');
           $(links).each(function(i, link) {
@@ -114,7 +112,7 @@ module.exports = function(app, passport) {
               season: season,
               name: $(link).text(),
               url: $(link).attr('href')
-            }
+            };
             episodes.push(episode);
             console.log(util.format('%s : %s', episode.name, episode.url));
           });
@@ -140,7 +138,7 @@ module.exports = function(app, passport) {
               episode.videos.push({
                 name: voiceNamesArray[i],
                 url: $(iframe).attr('src')
-              })
+              });
             });
             console.log(episode);
             callback();
@@ -160,7 +158,7 @@ module.exports = function(app, passport) {
           // find episodes from the season we want update in our db
           // remove all old episodes and add new
           var filteredEpisodes = show.episodes.filter(function(episode){
-            return episode.season == season;
+            return episode.season === season;
           });
           filteredEpisodes.forEach(function(episode, idx) {
             show.episodes.id(episode._id).remove();
@@ -185,7 +183,6 @@ module.exports = function(app, passport) {
   // route middleware to make sure a user is logged in
   function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
-    console.log(req);
     if (req.isAuthenticated()) {
       return next();
     }
@@ -212,4 +209,4 @@ module.exports = function(app, passport) {
       msg: 'Permission denied'
     });
   }
-}
+};

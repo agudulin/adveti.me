@@ -9,28 +9,12 @@
 
     <title>Adventure Time with Finn &amp; Jake</title>
 
-    <link href="/lib/normalize.css/normalize.css" rel="stylesheet">
     <link href="/stylesheets/main.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Mono&amp;subset=latin,cyrillic" rel="stylesheet">
-
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
   </head>
   <body>
-    <div class="wrapper">
-      <header class="header">Adventure Time</header>
-
-      {% block content %}
-      
-      {% endblock %}
-
-      <footer class="footer">
-        <p>:3</p>
-        <p>Made with all the love in the world to Sveta by <a href="https://twitter.com/agudulin">@agudulin</a>.</p>
-      </footer>
-    </div>
-
-    <!-- app scripts -->
-    <script src="/javascript/main.js"></script>
+    <div id="content"></div>
+    <script src="/javascript/build.js"></script>
     <!-- google analytics script -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
