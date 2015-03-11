@@ -94,7 +94,12 @@ module.exports = function(app, passport) {
     var season = parseInt(req.body.season, 10);
     var showId = req.body.show_id;
 
-    grabNewEpisodes(showId, season);
+    grabNewEpisodes(showId, season, function(err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.send({ msg: 'New episodes added!' });
+    });
   });
 
   // route middleware to make sure a user is logged in
