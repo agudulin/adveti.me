@@ -2,7 +2,7 @@ var _seasonEpisodes = {};
 var _changeListeners = [];
 var _initCalled = false;
 
-var SeasonEpisodeStore = module.exports = {
+var ShowStore = module.exports = {
   init: function () {
     if (_initCalled) {
       return;
@@ -17,7 +17,7 @@ var SeasonEpisodeStore = module.exports = {
         _seasonEpisodes[episode.season].push(episode);
       });
 
-      SeasonEpisodeStore.notifyChange();
+      ShowStore.notifyChange();
     });
   },
 
