@@ -1,0 +1,92 @@
+var async = require('async');
+var cheerio = require('cheerio');
+var express = require('express');
+var request = require('request');
+var util = require('util');
+
+var Show = require('../models/show');
+var User = require('../models/user');
+
+module.exports = function(showId, season, onParseCompleteCallback) {
+  var episodes = [];
+
+  async.waterfall([
+    function(callback) {
+      request(util.format('http://advetime.ru/category/sezon-%s', season), function(error, response, body) {
+        if (error) {
+          return next(error);
+        }
+        $ = cheerio.load(body);
+        var links = $('.type_category .cell-content .wrap h4 a');
+        $(links).each(function(i, link) {
+          var episode = {
+            season: season,
+            name: $(link).text(),
+            url: $(link).attr('href')
+          };
+          episodes.push(episode);
+          console.log(util.format('%s : %s', episode.name, episode.url));
+        });
+        callback(error, episodes);
+      });
+    },
+    function(episodes, callback) {
+
+      function getEpisode(episode, callback) {
+        request.get(episode.url, function(error, response, body) {
+          if (error) { callback(error); }
+          $ = cheerio.load(body);
+          var tabsContainer = $('.type_page_content .tabs_widget');
+          var voiceNames = tabsContainer.find('.elem span');
+          var voiceNamesArray = [];
+          $(voiceNames).each(function(i, voiceName) {
+            voiceNamesArray.push($(voiceName).text());
+          });
+
+          var iframes = tabsContainer.find('iframe');
+          episode.videos = [];
+          $(iframes).each(function(i, iframe) {
+            episode.videos.push({
+              name: voiceNamesArray[i],
+              url: $(iframe).attr('src')
+            });
+          });
+          console.log(episode);
+          callback();
+        });
+      }
+
+      async.each(episodes, getEpisode, function(err) {
+        if (err) return next(err);
+        callback(err, episodes);
+      });
+    },
+    function(episodes, callback) {
+      Show.findById(showId, function(err, show) {
+        if (err) {
+          res.send(err);
+        }
+        // find episodes from the season we want update in our db
+        // remove all old episodes and add new
+        var filteredEpisodes = show.episodes.filter(function(episode){
+          return episode.season === season;
+        });
+        filteredEpisodes.forEach(function(episode, idx) {
+          show.episodes.id(episode._id).remove();
+        });
+
+        show.episodes = show.episodes.concat(episodes);
+        callback(err, show);
+      });
+    }
+  ], function(err, show) {
+    if (err) return next(err);
+    console.log("DONE FINALLY");
+    show.save(function(err) {
+      if (err) {
+        res.send(err);
+      }
+    });
+    res.status(200).send({ msg: 'New episodes added!' });
+  });
+};
