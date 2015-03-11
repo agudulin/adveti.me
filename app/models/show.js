@@ -15,7 +15,8 @@ var EpisodeSchema = new Schema({
 
 var ShowSchema = new Schema({
   name: String,
-  episodes: [EpisodeSchema]
+  episodes: [EpisodeSchema],
+  updated: String
 });
 
 module.exports = mongoose.model('Show', ShowSchema);

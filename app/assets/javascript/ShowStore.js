@@ -1,8 +1,9 @@
 var _seasonEpisodes = {};
 var _changeListeners = [];
 var _initCalled = false;
+var _updated = null;
 
-var SeasonEpisodeStore = module.exports = {
+var ShowStore = module.exports = {
   init: function () {
     if (_initCalled) {
       return;
@@ -10,6 +11,7 @@ var SeasonEpisodeStore = module.exports = {
     _initCalled = true;
 
     getJSON("/api/show/53e552117425f53b64000003/" /*+ season + "/episodes"*/, function (err, res) {
+      _updated = res.updated;
       res.episodes.forEach(function (episode) {
         if (_seasonEpisodes[episode.season] === undefined) {
           _seasonEpisodes[episode.season] = [];
@@ -17,7 +19,7 @@ var SeasonEpisodeStore = module.exports = {
         _seasonEpisodes[episode.season].push(episode);
       });
 
-      SeasonEpisodeStore.notifyChange();
+      ShowStore.notifyChange();
     });
   },
 
@@ -27,6 +29,10 @@ var SeasonEpisodeStore = module.exports = {
 
   getSeasonEpisodes: function (season) {
     return _seasonEpisodes[season];
+  },
+
+  getUpdatedDateTime: function() {
+    return _updated;
   },
 
   notifyChange: function () {

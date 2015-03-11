@@ -17,6 +17,7 @@ module.exports = React.createClass({
         <footer className="footer">
           <p>:3</p>
           <p>Made with all the love in the world to Sveta by <a href="https://twitter.com/agudulin">@agudulin</a>.</p>
+          <div className="updated-datetime">Updated: {this.props.updatedDateTime}</div>
         </footer>
       </div>
     );

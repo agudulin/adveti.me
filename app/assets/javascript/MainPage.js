@@ -7,36 +7,38 @@ var Route = Router.Route,
 var Loader = require('react-loader');
 
 var PageLayout = require('./PageLayout');
-var SeasonEpisodeStore = require('./EpisodeStore');
+var ShowStore = require('./ShowStore');
 
 var MainPage = React.createClass({
   getInitialState: function() {
     return {
       episodes: {},
+      updatedDateTime: null,
       loaded: false
     };
   },
   componentWillMount: function() {
-    SeasonEpisodeStore.init();
+    ShowStore.init();
   },
   componentDidMount: function() {
-    SeasonEpisodeStore.addChangeListener(this.updateEpisodes);
+    ShowStore.addChangeListener(this.updateEpisodes);
   },
   componentWillUnmount: function() {
-    SeasonEpisodeStore.removeChangeListener(this.updateEpisodes);
+    ShowStore.removeChangeListener(this.updateEpisodes);
   },
   updateEpisodes: function() {
     if (!this.isMounted()) {
       return;
     }
     this.setState({
-      episodes: SeasonEpisodeStore.getEpisodes(),
+      episodes: ShowStore.getEpisodes(),
+      updatedDateTime: ShowStore.getUpdatedDateTime(),
       loaded: true
     });
   },
   render: function() {
     return (
-      <PageLayout headerRoute="main">
+      <PageLayout headerRoute="main" updatedDateTime={this.state.updatedDateTime}>
         <aside className="seasons-navigation">
           <SeasonNavigationBox seasons={Object.keys(this.state.episodes)} />
         </aside>
@@ -90,7 +92,7 @@ var EpisodeList = React.createClass({
     var episodeNodes = this.props.data.map(function(episode, index) {
       return (
         <Episode data={episode} key={index} />
-      )
+      );
     });
     return (
       <ul className="episodes-navbar">
@@ -105,17 +107,17 @@ var Season = React.createClass({
   getStateFromStore: function() {
     var season = this.getParams().season;
     return {
-      episodes: SeasonEpisodeStore.getSeasonEpisodes(season)
+      episodes: ShowStore.getSeasonEpisodes(season)
     };
   },
   getInitialState: function() {
     return this.getStateFromStore();
   },
   componentDidMount: function() {
-    SeasonEpisodeStore.addChangeListener(this.updateSeasonEpisodes);
+    ShowStore.addChangeListener(this.updateSeasonEpisodes);
   },
   componentWillUnmount: function() {
-    SeasonEpisodeStore.removeChangeListener(this.updateSeasonEpisodes);
+    ShowStore.removeChangeListener(this.updateSeasonEpisodes);
   },
   componentWillReceiveProps: function() {
     this.setState(this.getStateFromStore());
@@ -149,4 +151,4 @@ module.exports = {
   MainPage: MainPage,
   Season: Season,
   BmoVision: BmoVision
-}
+};
