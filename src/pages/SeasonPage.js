@@ -1,21 +1,15 @@
 import React, { Component, PropTypes } from "react";
-import { connectToStores } from "fluxible/addons";
 
 import PageLayout from "../components/PageLayout";
 import EpisodeList from "../components/EpisodeList";
 
-// if (process.env.CLIENT) {
-//   require("../style/SeasonPage.css");
-// }
-
 class SeasonPage extends Component {
-  static propTypes = {
-    season: PropTypes.string.isRequired,
-    episodes: PropTypes.array.isRequired
+  static contextTypes = {
+    getStore: PropTypes.func.isRequired
   }
 
   render() {
-    const { season, episodes } = this.props;
+    const episodes = this.context.getStore("ShowStore").getEpisodes();
 
     return (
       <PageLayout updatedDateTime="just now">
@@ -25,12 +19,5 @@ class SeasonPage extends Component {
   }
 
 }
-
-SeasonPage = connectToStores(SeasonPage, ["ShowStore"],
-  (stores) => ({
-    season: stores.ShowStore.getCurrentSeason(),
-    episodes: stores.ShowStore.getEpisodes()
-  })
-);
 
 export default SeasonPage;

@@ -2,11 +2,10 @@
 
 import React from "react";
 import serialize from "serialize-javascript";
+import { navigateAction } from "fluxible-router";
 
 import app from "../app";
 import HtmlDocument from "./HtmlDocument";
-
-import { navigateAction } from "fluxible-router";
 
 let webpackStats;
 
@@ -26,7 +25,7 @@ function renderApp(req, res, context, next) {
     }
 
     // dehydrate the app and expose its state
-    const state = "window.App=" + serialize(app.dehydrate(context)) + ";";
+    const state = `window.App=${serialize(app.dehydrate(context))};`;
 
     const Application = app.getComponent();
 
@@ -35,6 +34,7 @@ function renderApp(req, res, context, next) {
       <Application context={ context.getComponentContext() } />
     );
 
+    const doctype = "<!DOCTYPE html>";
     const html = React.renderToStaticMarkup(
       <HtmlDocument
         context={ context.getComponentContext() }
@@ -44,7 +44,6 @@ function renderApp(req, res, context, next) {
         css={webpackStats.css}
       />
     );
-    const doctype = "<!DOCTYPE html>";
     res.send(doctype + html);
   }
   catch (e) {
@@ -53,7 +52,6 @@ function renderApp(req, res, context, next) {
 }
 
 function render(req, res, next) {
-
   // Create a fluxible context (_csrf is needed by the fetchr plugin)
   const context = app.createContext({
     req: req,
@@ -65,11 +63,11 @@ function render(req, res, next) {
   context.executeAction(navigateAction, { url: req.url })
     .then(() => renderApp(req, res, context, next))
     .catch((err) => {
-      if (!err.statusCode || !err.status) {
-        next(err);
+      if (err.statusCode || err.status) {
+        renderApp(req, res, context, next);
       }
       else {
-        renderApp(req, res, context, next);
+        next(err);
       }
     });
 }
