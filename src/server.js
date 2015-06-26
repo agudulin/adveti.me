@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 // import favicon from "serve-favicon";
 import morgan from "morgan";
 import csurf from "csurf";
+import app from "./app";
 import render from "./server/render";
 
 const server = express();
@@ -20,7 +21,15 @@ server.use(csurf({ cookie: true }));
 
 if (server.get("env") === "production") {
   server.use(require("serve-static")(path.join(__dirname, "..", "public")));
+} else {
+  server.use("/assets", express.static(path.resolve(__dirname, "./assets")));
 }
+
+// configure fetchr (for doing api calls server and client-side) and register its services
+const fetchr = app.getPlugin("FetchrPlugin");
+fetchr.registerService(require("./services/show"));
+// use the fetchr middleware (will enable requests from /api)
+server.use(fetchr.getXhrPath(), fetchr.getMiddleware());
 
 server.use(render);
 

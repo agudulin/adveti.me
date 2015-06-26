@@ -1,0 +1,12 @@
+.BmoVision {
+  margin: 0 10px;
+  img {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .BmoVision {
+    margin: 0;
+  }
+}

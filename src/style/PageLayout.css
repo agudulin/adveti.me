@@ -1,32 +1,64 @@
 .PageLayout {
-  &__header {
-    background-color: deepskyblue;
-    width: 100%;
-    text-align: center;
-    font-size: 1.2em;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  display: flex;
+  flex-flow: row wrap;
+  & > * {
+    flex: 1 100%;
+  }
+}
+.PageLayout__header {
+  background-color: deepskyblue;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 
-    & > a {
-      color: inherit;
-      text-decoration: none;
-    }
+  & > a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+.PageLayout__footer {
+  text-align: center;
+  color: darkgray;
+
+  & > a {
+    color: darkgray;
   }
 
-  &__footer {
-    text-align: center;
-    color: darkgray;
+  .updated-datetime {
+    font-size: 0.8em;
+    margin: -0.8em auto 0.8em;
+    color: gainsboro;
+  }
+}
+.PageLayout__content {
+  display: flex;
+  flex-flow: row wrap;
 
-    & > a {
-      color: darkgray;
-    }
+  & > * {
+    flex: 1 100%;
+  }
+}
 
-    .updated-datetime {
-      font-size: 0.8em;
-      margin: -0.8em auto 0.8em;
-      color: gainsboro;
-    }
+@media all and (max-width: 600px) {
+  .PageLayout__aside {
+    display: flex;
+    flex-flow: column wrap;
+  }
+}
+
+@media all and (min-width: 601px) {
+  .PageLayout__aside {
+    flex: 1 20%;
+    order: 1;
+    margin-top: 10px;
+  }
+  .PageLayout__article {
+    flex: 8 0;
+    order: 2;
+    margin-top: 10px;
   }
 }
