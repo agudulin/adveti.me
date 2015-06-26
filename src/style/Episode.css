@@ -1,0 +1,28 @@
+.Episode__name {
+  font-weight: bold;
+  margin: 5px;
+}
+.Episode__video-link {
+  padding: 5px;
+  margin-right: 3px;
+  color: whitesmoke;
+  background-color: deepskyblue;
+  display: inline-block;
+  text-decoration: none;
+
+  opacity: 0.5;
+  transition: opacity 0.1s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.EpisodeList {
+  list-style: none;
+  font-size: 0.8em;
+  padding-left: 0;
+  li {
+    margin-bottom: 10px;
+  }
+}

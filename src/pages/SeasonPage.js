@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { connectToStores } from "fluxible/addons";
 
 import PageLayout from "../components/PageLayout";
+import EpisodeList from "../components/EpisodeList";
 
 // if (process.env.CLIENT) {
 //   require("../style/SeasonPage.css");
@@ -18,9 +19,7 @@ class SeasonPage extends Component {
 
     return (
       <PageLayout updatedDateTime="just now">
-        {season}
-        <br />
-        {episodes}
+        <EpisodeList episodes={episodes} />
       </PageLayout>
     );
   }
