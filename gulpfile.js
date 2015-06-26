@@ -54,9 +54,10 @@ gulp.task('browserify', function(){
   return b.bundle()
     .pipe(source('build.js'))
     .pipe(buffer())
-    .pipe(jsx())
+    .pipe(jsx({ factory: "virtualdom.h" }))
     .pipe(uglifyJS())
     .pipe(gulp.dest('./public/javascript'));
 });
 
+gulp.task('build', ['less', 'css', 'browserify']);
 gulp.task('default', ['less', 'css', 'watch', 'browserify']);
