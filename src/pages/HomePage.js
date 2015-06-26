@@ -3,6 +3,10 @@ import React, { Component } from "react";
 import PageLayout from "../components/PageLayout";
 import SeasonNavigation from "../components/SeasonNavigation";
 
+if (process.env.CLIENT) {
+  require("../style/HomePage.css");
+}
+
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -14,13 +18,15 @@ class HomePage extends Component {
   render() {
     return (
       <PageLayout updatedDateTime="just now">
-        <aside>
-          <SeasonNavigation seasons={this.state.seasons} />
-        </aside>
+        <div className="HomePage">
+          <aside className="HomePage__aside">
+            <SeasonNavigation seasons={this.state.seasons} />
+          </aside>
 
-        <article>
-          content
-        </article>
+          <article className="HomePage__article">
+            content
+          </article>
+        </div>
       </PageLayout>
     );
   }
