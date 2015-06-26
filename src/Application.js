@@ -6,9 +6,9 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
 import LoadingPage from "./pages/LoadingPage";
 
-// if (process.env.BROWSER) {
-//   require("./style/Application.scss");
-// }
+if (process.env.CLIENT) {
+  require("./style/Application.css");
+}
 
 class Application extends Component {
 

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
+import PageLayout from "../components/PageLayout";
+
 class HomePage extends Component {
 
   render() {
     return (
-      <div>
-        Mathematical!
-      </div>
+      <PageLayout updatedDateTime="just now">
+        page content
+      </PageLayout>
     );
   }
 

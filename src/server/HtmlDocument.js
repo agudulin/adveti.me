@@ -21,11 +21,11 @@ class HtmlDocument extends React.Component {
   }
 
   render() {
-    const { state, markup, script, css, lang } = this.props;
+    const { state, markup, script, css } = this.props;
     const htmlHead = this.context.getStore("HtmlHeadStore");
 
     return (
-      <html lang={lang}>
+      <html>
         <head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 

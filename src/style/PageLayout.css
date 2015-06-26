@@ -1,0 +1,32 @@
+.PageLayout {
+  &__header {
+    background-color: deepskyblue;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    & > a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    color: darkgray;
+
+    & > a {
+      color: darkgray;
+    }
+
+    .updated-datetime {
+      font-size: 0.8em;
+      margin: -0.8em auto 0.8em;
+      color: gainsboro;
+    }
+  }
+}

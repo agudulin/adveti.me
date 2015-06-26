@@ -1,3 +1,6 @@
+var autoprefixer = require("autoprefixer-core");
+var csswring = require("csswring");
+var postcssNested = require("postcss-nested");
 var path = require("path");
 var webpack = require("webpack");
 var writeStats = require("./utils/write-stats");
@@ -27,10 +30,12 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.(jpe?g|png|gif|svg)$/, loader: "file" },
-      { test: /\.js$/, exclude: /node_modules/, loaders: ["react-hot", "babel?stage=0&optional=runtime&plugins=typecheck"] }
+      { test: /\.js$/, exclude: /node_modules/, loaders: ["react-hot", "babel?stage=0&optional=runtime&plugins=typecheck"] },
+      { test: /\.css$/, loader: "style!css!postcss" }
     ]
   },
   progress: true,
+  postcss: [autoprefixer, csswring, postcssNested],
   resolve: {
     modulesDirectories: [
       "src",
@@ -47,8 +52,8 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("development"),
-        __CLIENT__: JSON.stringify(true),
-        __SERVER__: JSON.stringify(false)
+        CLIENT: true,
+        SERVER: false
       }
     }),
 
