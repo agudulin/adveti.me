@@ -28,5 +28,5 @@ node_modules
 .lock-wscript
 
 # Secret config files
-conf/dev.env
+conf/dev.js
 conf/prod.env
