@@ -12,34 +12,34 @@ class ShowStore extends Fluxible.BaseStore {
   constructor(dispatcher) {
     super(dispatcher);
 
-    this.season = null;
-    this.episodes = [];
+    this.currentSeason = null;
+    this.episodes = {};
   }
 
   onLoadEpisodesSuccess({ season, episodes }) {
-    this.season = season;
-    this.episodes = episodes;
+    this.currentSeason = season;
+    this.episodes[season] = episodes;
     this.emitChange();
   }
 
   getCurrentSeason() {
-    return this.season;
+    return this.currentSeason;
   }
 
   getEpisodes() {
-    return this.episodes;
+    return this.episodes[this.currentSeason];
   }
 
   dehydrate() {
     return {
       episodes: this.episodes,
-      season: this.season
+      currentSeason: this.currentSeason
     };
   }
 
-  rehydrate({ episodes, season }) {
+  rehydrate({ episodes, currentSeason }) {
     this.episodes = episodes;
-    this.season = season;
+    this.currentSeason = currentSeason;
   }
 
 }

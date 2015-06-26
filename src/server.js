@@ -8,6 +8,7 @@ import morgan from "morgan";
 import csurf from "csurf";
 import app from "./app";
 import render from "./server/render";
+import storage from "./server/storage";
 
 const server = express();
 
@@ -39,6 +40,8 @@ server.use((err, req, res) => {
   console.log(err.stack);
   res.status(500).send("Something bad happened");
 });
+
+storage.init();
 
 server.set("port", process.env.PORT || 3000);
 
