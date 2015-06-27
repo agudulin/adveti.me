@@ -1,5 +1,6 @@
 import { BaseStore } from "fluxible/addons";
 import Actions from "../constants/Actions";
+import { TITLE, DESCRIPTION} from "../constants/Html";
 
 const debug = require("debug")("advetime");
 
@@ -15,8 +16,8 @@ class HtmlHeadStore extends BaseStore {
 
   constructor(dispatcher) {
     super(dispatcher);
-    this.title = "Adveti.me";
-    this.description = "Adveti.me";
+    this.title = TITLE;
+    this.description = DESCRIPTION;
   }
 
   getTitle() {
@@ -35,8 +36,8 @@ class HtmlHeadStore extends BaseStore {
   handleNavigateSuccess(route) {
     debug(route.get("name"));
 
-    this.title = route.get("title");
-    this.description = route.get("description");
+    this.title = route.get("title") || TITLE;
+    this.description = route.get("description") || DESCRIPTION;
 
     this.emitChange();
   }
