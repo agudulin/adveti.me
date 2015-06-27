@@ -38,8 +38,7 @@ class PageLayout extends Component {
           </aside>
 
           <article className="PageLayout__article">
-            { isLoading ? <Loading /> : ""}
-            {this.props.children}
+            {isLoading ? <Loading /> : this.props.children}
           </article>
         </div>
 
