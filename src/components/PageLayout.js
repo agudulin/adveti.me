@@ -38,15 +38,17 @@ class PageLayout extends Component {
           </aside>
 
           <article className="PageLayout__article">
-            {isLoading ? <Loading /> : this.props.children}
+            { isLoading ? <Loading /> : this.props.children }
           </article>
         </div>
 
-        <footer className="PageLayout__footer">
-          <p>:3</p>
-          <p>Made with all the love in the world to Sveta by <a href="https://twitter.com/agudulin">@agudulin</a>.</p>
-          <div className="updated-datetime">Updated: {updatedDateTime}</div>
-        </footer>
+        { isLoading ? ""
+          : <footer className="PageLayout__footer">
+            <p>:3</p>
+            <p>Made with all the love in the world to Sveta by <a href="https://twitter.com/agudulin">@agudulin</a>.</p>
+            <div className="updated-datetime">Updated: {updatedDateTime}</div>
+          </footer>
+        }
       </div>
     );
   }
