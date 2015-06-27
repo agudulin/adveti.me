@@ -2,9 +2,9 @@ import React, { PropTypes, Component } from "react";
 import { provideContext, connectToStores } from "fluxible/addons";
 import { handleHistory } from "fluxible-router";
 
+import PageLayout from "./components/PageLayout";
 import NotFoundPage from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
-import LoadingPage from "./pages/LoadingPage";
 
 if (process.env.CLIENT) {
   require("./style/Application.css");
@@ -49,15 +49,16 @@ class Application extends Component {
     else if (!Handler) {
       content = <NotFoundPage />;
     }
-    else if (!isNavigateComplete) {
-      content = <LoadingPage />;
-    }
     else {
       // Here you go with the actual page content
       const params = currentRoute.get("params").toJS();
       content = <Handler {...params} />;
     }
-    return content;
+    return (
+      <PageLayout isLoading={!isNavigateComplete}>
+        {content}
+      </PageLayout>
+    );
   }
 
 }

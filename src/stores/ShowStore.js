@@ -1,7 +1,7 @@
-import Fluxible from "fluxible/addons";
+import { BaseStore } from "fluxible/addons";
 import Actions from "../constants/Actions";
 
-class ShowStore extends Fluxible.BaseStore {
+class ShowStore extends BaseStore {
 
   static storeName = "ShowStore"
 
@@ -13,6 +13,7 @@ class ShowStore extends Fluxible.BaseStore {
     super(dispatcher);
 
     this.currentSeason = null;
+    this.updatedDateTime = null;
     this.episodes = {};
   }
 
@@ -30,16 +31,22 @@ class ShowStore extends Fluxible.BaseStore {
     return this.episodes[this.currentSeason];
   }
 
+  getUpdatedDateTime() {
+    return this.updatedDateTime;
+  }
+
   dehydrate() {
     return {
       episodes: this.episodes,
-      currentSeason: this.currentSeason
+      currentSeason: this.currentSeason,
+      updatedDateTime: this.updatedDateTime
     };
   }
 
-  rehydrate({ episodes, currentSeason }) {
+  rehydrate({ episodes, currentSeason, updatedDateTime }) {
     this.episodes = episodes;
     this.currentSeason = currentSeason;
+    this.updatedDateTime = updatedDateTime;
   }
 
 }

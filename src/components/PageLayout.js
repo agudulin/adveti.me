@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { NavLink } from "fluxible-router";
 
 import SeasonNavigation from "../components/SeasonNavigation";
+import Loading from "../components/Loading";
 
 if (process.env.CLIENT) {
   require("../style/PageLayout.css");
@@ -9,7 +10,11 @@ if (process.env.CLIENT) {
 
 class PageLayout extends Component {
   static propTypes = {
-    updatedDateTime: PropTypes.string.isRequired
+    isLoading: PropTypes.bool.isRequired
+  }
+
+  static contextTypes = {
+    getStore: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -20,7 +25,8 @@ class PageLayout extends Component {
   }
 
   render() {
-    const { updatedDateTime } = this.props;
+    const { isLoading } = this.props;
+    const updatedDateTime = this.context.getStore("ShowStore").getUpdatedDateTime();
 
     return (
       <div className="PageLayout">
@@ -32,6 +38,7 @@ class PageLayout extends Component {
           </aside>
 
           <article className="PageLayout__article">
+            { isLoading ? <Loading /> : ""}
             {this.props.children}
           </article>
         </div>
