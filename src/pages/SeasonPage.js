@@ -1,14 +1,15 @@
 import React, { Component, PropTypes } from "react";
+import { connectToStores } from "fluxible/addons";
 
 import EpisodeList from "../components/EpisodeList";
 
 class SeasonPage extends Component {
-  static contextTypes = {
-    getStore: PropTypes.func.isRequired
+  static propTypes = {
+    episodes: PropTypes.array.isRequired
   }
 
   render() {
-    const episodes = this.context.getStore("ShowStore").getEpisodes();
+    const { episodes } = this.props;
 
     return (
       <EpisodeList episodes={episodes} />
@@ -16,5 +17,11 @@ class SeasonPage extends Component {
   }
 
 }
+
+SeasonPage = connectToStores(SeasonPage, ["ShowStore"],
+  (stores) => ({
+    episodes: stores.ShowStore.getEpisodes()
+  })
+);
 
 export default SeasonPage;

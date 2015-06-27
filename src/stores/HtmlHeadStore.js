@@ -1,7 +1,7 @@
 import { BaseStore } from "fluxible/addons";
 import Actions from "../constants/Actions";
 
-const debug = require("debug")("mint");
+const debug = require("debug")("advetime");
 
 class HtmlHeadStore extends BaseStore {
 

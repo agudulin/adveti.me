@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_PATH=\"./src\" NODE_ENV=\"production\" PORT=\"8080\" node index",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
-    "start-dev": "NODE_PATH=\"./src\" NODE_ENV=\"development\" node index",
+    "start-dev": "NODE_PATH=\"./src\" NODE_ENV=\"development\" DEBUG=advetime node index",
     "watch-client": "NODE_PATH=\"./src\" node ./webpack/webpack-dev-server.js",
     "dev": "node ./node_modules/concurrently/src/main.js --kill-others \"npm run watch-client\" \"npm run start-dev\""
   },
