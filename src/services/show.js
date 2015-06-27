@@ -1,7 +1,7 @@
 import Show from "../models/Show";
+import { SHOW_ID } from "../constants/Show";
 
 const debug = require("debug")("advetime");
-const SHOW_ID = "53e552117425f53b64000003";
 
 export default {
   name: "show",
@@ -20,11 +20,12 @@ export default {
         const filteredEpisodes = show.episodes.filter(episode => episode.season === episodeSeason);
         return done(null, {
           season: season,
-          episodes: filteredEpisodes
+          episodes: filteredEpisodes,
+          updatedDt: show.updated
         });
       }
 
-      return done(null, { episodes: show.episodes });
+      return done(null, { updatedDt: show.updated });
     });
   }
 

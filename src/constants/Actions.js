@@ -6,7 +6,8 @@ const Actions = keyMirror({
   NAVIGATE_SUCCESS: null,
   NAVIGATE_FAILURE: null,
 
-  LOAD_EPISODES_SUCCESS: null
+  LOAD_EPISODES_SUCCESS: null,
+  LOAD_UPDATE_INFO_SUCCESS: null
 });
 
 export default Actions;
