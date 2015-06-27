@@ -29,6 +29,7 @@ node_modules
 
 # Secret config files
 conf/dev.js
-conf/prod.env
+conf/prod.js
 
 webpack-stats.json
+public
