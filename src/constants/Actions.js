@@ -9,6 +9,9 @@ const Actions = keyMirror({
   LOAD_EPISODES_SUCCESS: null,
   LOAD_UPDATE_INFO_SUCCESS: null,
 
+  UPDATE_EPISODES_START: null,
+  UPDATE_EPISODES_SUCCESS: null,
+
   AUTH_SUCCESS: null,
   AUTH_LOGOUT: null
 });

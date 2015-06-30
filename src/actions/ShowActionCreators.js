@@ -31,6 +31,22 @@ const ShowActionCreators = {
 
       done();
     });
+  },
+
+  updateSeasonData(context, { season }, done) {
+    context.dispatch(Actions.UPDATE_EPISODES_START);
+
+    context.service.update("show", { season }, {}, { timeout: 20000 }, (err, data) => {
+      if (err) {
+        return done(err);
+      }
+
+      context.dispatch(Actions.UPDATE_EPISODES_SUCCESS, {
+        season: season
+      });
+
+      done();
+    });
   }
 
 };

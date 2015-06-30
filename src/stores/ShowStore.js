@@ -7,7 +7,9 @@ class ShowStore extends BaseStore {
 
   static handlers = {
     [Actions.LOAD_EPISODES_SUCCESS]: "onLoadEpisodesSuccess",
-    [Actions.LOAD_UPDATE_INFO_SUCCESS]: "onLoadUpdateInfoSuccess"
+    [Actions.LOAD_UPDATE_INFO_SUCCESS]: "onLoadUpdateInfoSuccess",
+    [Actions.UPDATE_EPISODES_START]: "onUpdateEpisodesStart",
+    [Actions.UPDATE_EPISODES_SUCCESS]: "onUpdateEpisodesSuccess"
   }
 
   constructor(dispatcher) {
@@ -30,6 +32,16 @@ class ShowStore extends BaseStore {
     this.emitChange();
   }
 
+  onUpdateEpisodesStart() {
+    this.isUpdating = true;
+    this.emitChange();
+  }
+
+  onUpdateEpisodesSuccess() {
+    this.isUpdating = false;
+    this.emitChange();
+  }
+
   getCurrentSeason() {
     return this.currentSeason;
   }
@@ -42,18 +54,24 @@ class ShowStore extends BaseStore {
     return this.updatedDateTime;
   }
 
+  getIsUpdating() {
+    return this.isUpdating;
+  }
+
   dehydrate() {
     return {
       episodes: this.episodes,
       currentSeason: this.currentSeason,
-      updatedDateTime: this.updatedDateTime
+      updatedDateTime: this.updatedDateTime,
+      isUpdating: this.isUpdating
     };
   }
 
-  rehydrate({ episodes, currentSeason, updatedDateTime }) {
+  rehydrate({ episodes, currentSeason, updatedDateTime, isUpdating }) {
     this.episodes = episodes;
     this.currentSeason = currentSeason;
     this.updatedDateTime = updatedDateTime;
+    this.isUpdating = isUpdating;
   }
 
 }
