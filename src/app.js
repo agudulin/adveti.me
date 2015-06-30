@@ -6,6 +6,7 @@ import routes from "./routes";
 import Application from "./Application";
 import HtmlHeadStore from "./stores/HtmlHeadStore";
 import ShowStore from "./stores/ShowStore";
+import AuthStore from "./stores/AuthStore";
 
 // create the fluxible app using Application as root component
 const app = new Fluxible({ component: Application });
@@ -20,5 +21,6 @@ app.registerStore(AppRouteStore);
 // XXX: app-specific stores here
 app.registerStore(HtmlHeadStore);
 app.registerStore(ShowStore);
+app.registerStore(AuthStore);
 
 export default app;

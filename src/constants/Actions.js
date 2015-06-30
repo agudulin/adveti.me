@@ -7,7 +7,10 @@ const Actions = keyMirror({
   NAVIGATE_FAILURE: null,
 
   LOAD_EPISODES_SUCCESS: null,
-  LOAD_UPDATE_INFO_SUCCESS: null
+  LOAD_UPDATE_INFO_SUCCESS: null,
+
+  AUTH_SUCCESS: null,
+  AUTH_LOGOUT: null
 });
 
 export default Actions;

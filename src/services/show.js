@@ -1,4 +1,4 @@
-import Show from "../models/Show";
+import Show from "../models/ShowModel";
 import { SHOW_ID } from "../constants/Show";
 
 const debug = require("debug")("advetime");
@@ -9,23 +9,21 @@ export default {
   read(req, resource, { season }, config, done) {
     const episodeSeason = parseInt(season, 10);
 
-    Show.findById(SHOW_ID, (err, show) => {
-      debug(err);
-
+    Show.findById(SHOW_ID, (err, showModel) => {
       if (err) {
         return done(err, null);
       }
 
       if (season) {
-        const filteredEpisodes = show.episodes.filter(episode => episode.season === episodeSeason);
+        const filteredEpisodes = showModel.episodes.filter(episode => episode.season === episodeSeason);
         return done(null, {
           season: season,
           episodes: filteredEpisodes,
-          updatedDt: show.updated
+          updatedDt: showModel.updated
         });
       }
 
-      return done(null, { updatedDt: show.updated });
+      return done(null, { updatedDt: showModel.updated });
     });
   }
 

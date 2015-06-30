@@ -43,7 +43,7 @@ class HtmlHeadStore extends BaseStore {
   }
 
   handleNavigateFailure(error) {
-    this.title = "500";
+    this.title = error.statusCode || "Error";
     this.emitChange();
   }
 

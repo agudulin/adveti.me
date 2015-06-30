@@ -5,6 +5,7 @@ import { handleHistory } from "fluxible-router";
 import PageLayout from "./components/PageLayout";
 import NotFoundPage from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
+import LoginPage from "./pages/LoginPage";
 
 if (process.env.CLIENT) {
   require("./style/Application.css");
@@ -43,6 +44,9 @@ class Application extends Component {
     if (currentNavigateError && currentNavigateError.statusCode === 404) {
       content = <NotFoundPage />;
     }
+    else if (currentNavigateError && currentNavigateError.statusCode === 403) {
+      content = <LoginPage />;
+    }
     else if (currentNavigateError) {
       content = <ErrorPage err={currentNavigateError} />;
     }
@@ -54,11 +58,10 @@ class Application extends Component {
       const params = currentRoute.get("params").toJS();
       content = <Handler {...params} />;
     }
-    return (
-      <PageLayout isLoading={!isNavigateComplete}>
-        {content}
-      </PageLayout>
-    );
+    if (currentRoute && currentRoute.get("name") !== "admin") {
+      content = <PageLayout isLoading={!isNavigateComplete}>{content}</PageLayout>;
+    }
+    return content;
   }
 
 }

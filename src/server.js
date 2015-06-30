@@ -3,6 +3,8 @@ import express from "express";
 import compression from "compression";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import session from "express-session";
+import passport from "passport";
 // import favicon from "serve-favicon";
 import morgan from "morgan";
 import csurf from "csurf";
@@ -29,8 +31,21 @@ if (server.get("env") === "production") {
 // configure fetchr (for doing api calls server and client-side) and register its services
 const fetchr = app.getPlugin("FetchrPlugin");
 fetchr.registerService(require("./services/show"));
+fetchr.registerService(require("./services/auth"));
 // use the fetchr middleware (will enable requests from /api)
 server.use(fetchr.getXhrPath(), fetchr.getMiddleware());
+
+// configure session
+server.use(session({
+  secret: "mathematical",
+  resave: false,
+  saveUninitialized: true
+}));
+server.use(passport.initialize());
+server.use(passport.session()); // persistent login sessions
+
+storage.init();
+require("./passport")(server, passport);
 
 server.use(render);
 
@@ -40,8 +55,6 @@ server.use((err, req, res) => {
   console.log(err.stack);
   res.status(500).send("Something bad happened");
 });
-
-storage.init();
 
 server.set("port", process.env.PORT || 3000);
 
