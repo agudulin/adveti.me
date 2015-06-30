@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from "react";
 import { connectToStores } from "fluxible/addons";
 import { updateSeasonData } from "../actions/ShowActionCreators";
 
+if (process.env.CLIENT) {
+  require("../style/AdminPage.css");
+}
+
 class AdminPage extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
@@ -22,24 +26,28 @@ class AdminPage extends Component {
     const { user, isUpdating } = this.props;
 
     return (
-      <div>
-        <p>
-          <strong>Role</strong>: {user.role}<br/>
-          <strong>Id</strong>: {user.twitter.id}<br/>
-          <strong>Token</strong>: {user.twitter.token}<br/>
-          <strong>Username</strong>: {user.twitter.username}
-        </p>
+      <div className="AdminPage">
+        <header className="AdminPage__header"><a href="/admin">Adventure Time</a></header>
 
-        <form onSubmit={this.updateSeasonData.bind(this)}>
-          <input type="number" ref="seasonNumber" defaultValue="6" />
-          {
-            isUpdating
-            ? <button disabled="disabled">Updating&hellip;</button>
-            : <button type="submit">Update</button>
-          }
-        </form>
+        <main className="AdminPage__content">
+          <p>
+            {/*<strong>Role</strong>: {user.role}<br/>*/}
+            {/*<strong>Id</strong>: {user.twitter.id}<br/>*/}
+            {/*<strong>Token</strong>: {user.twitter.token}<br/>*/}
+            <strong>Username</strong>: {user.twitter.username}
+          </p>
 
-        <a href="/logout">Logout</a>
+          <form onSubmit={this.updateSeasonData.bind(this)}>
+            <input type="number" ref="seasonNumber" defaultValue="6" />
+            {
+              isUpdating
+              ? <button disabled="disabled">Updating&hellip;</button>
+              : <button type="submit">Update</button>
+            }
+          </form>
+
+          <a className="AdminPage__logout" href="/logout">Logout</a>
+        </main>
       </div>
     );
   }
