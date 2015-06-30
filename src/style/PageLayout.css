@@ -24,11 +24,10 @@
   text-align: center;
   color: darkgray;
 
-  & > a {
+  & a {
     color: darkgray;
   }
-
-  .updated-datetime {
+  & .updated-datetime {
     font-size: 0.8em;
     margin: -0.8em auto 0.8em;
     color: gainsboro;
