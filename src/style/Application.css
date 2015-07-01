@@ -1,0 +1,12 @@
+@media screen {
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font: 1em "PT Sans", sans-serif;
+  margin: 0;
+}

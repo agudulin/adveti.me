@@ -1,0 +1,40 @@
+.SeasonNavigation {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+.SeasonNavigation__btn {
+  text-decoration: none;
+  display: block;
+  padding: 1em;
+  font-size: 0.9em;
+  color: #09c;
+  transition: background-color 0.1s ease, color 0.1s ease;
+
+  &:hover {
+    background-color: #66d9ff;
+    color: white;
+    opacity: 1;
+  }
+}
+.SeasonNavigation__btn--active {
+  background-color: #00b7f5;
+  color: white;
+}
+
+@media all and (max-width: 600px) {
+  .SeasonNavigation {
+    display: block;
+    padding: 0;
+    background-color: deepskyblue;
+
+    &__btn {
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+  }
+}

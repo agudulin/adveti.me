@@ -28,16 +28,8 @@ node_modules
 .lock-wscript
 
 # Secret config files
-conf/dev.env
-conf/prod.env
+conf/dev.js
+conf/prod.js
 
-# IDEA config files
-.idea
-
-# bower
-bower_components
-public/lib
-public/stylesheets
-public/javascript
-
-build
+webpack-stats.json
+public
