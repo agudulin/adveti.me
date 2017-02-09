@@ -3,14 +3,11 @@ import Link from 'next/link'
 
 export default () => (
   <ul>
-    <li><Link href='/season/1'><a>Season 1</a></Link></li>
-    <li><Link href='/season/2'><a>Season 2</a></Link></li>
-    <li><Link href='/season/3'><a>Season 3</a></Link></li>
-    <li><Link href='/season/4'><a>Season 4</a></Link></li>
-    <li><Link href='/season/5'><a>Season 5</a></Link></li>
-    <li><Link href='/season/6'><a>Season 6</a></Link></li>
-    <li><Link href='/season/7'><a>Season 7</a></Link></li>
-    <li><Link href='/season/8'><a>Season 8</a></Link></li>
+    {
+      [...Array(8)].map((_, n) => (
+        <li><Link href={`/season?n=${n + 1}`}><a>Season {n + 1}</a></Link></li>
+      ))
+    }
 
     <style jsx>{`
       ul {
