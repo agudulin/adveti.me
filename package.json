@@ -1,8 +1,21 @@
 {
+  "private": true,
   "name": "adveti.me",
   "version": "0.0.0",
-  "private": true,
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "scripts": {
+    "dev": "next",
+    "deploy": "now --alias",
+    "build": "next build",
+    "start": "next start"
+  },
+  "now": {
+    "aliases": ["adveti.me", "www.adveti.me"]
+  },
+  "dependencies": {
+    "next": "^2.0.0-beta.24"
+  },
+  "devDependencies": {},
+  "repository": "git@github.com:agudulin/adveti.me.git",
+  "author": "Alexander Gudulin <alexandr.gudulin@gmail.com>",
+  "license": "MIT"
 }
