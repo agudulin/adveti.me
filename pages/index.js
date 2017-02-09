@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
 
+import SeasonsList from '../components/seasons-list'
+
 export default class App extends Component {
   render () {
     return (
@@ -11,19 +13,10 @@ export default class App extends Component {
           <meta content='initial-scale=1.0, width=device-width' name='viewport' />
         </Head>
 
-        adveti.me
-        <p>soon <span>.............</span></p>
+        <main>
+          <SeasonsList />
+        </main>
 
-        <style jsx>{`
-          p {
-            color: #555;
-            margin: 0;
-            font-size: 1rem;
-          }
-          span {
-            color: #333;
-          }
-        `}</style>
         <style jsx global>{`
           :root {
             box-sizing: border-box;
@@ -42,8 +35,6 @@ export default class App extends Component {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
             font-size: 1.5rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
           }
         `}</style>
       </div>
