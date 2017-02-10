@@ -5,7 +5,7 @@ export default () => (
   <ul>
     {
       [...Array(8)].map((_, n) => (
-        <li><Link href={`/season?n=${n + 1}`}><a>Season {n + 1}</a></Link></li>
+        <li key={n}><Link href={`/season?n=${n + 1}`}><a>Season {n + 1}</a></Link></li>
       ))
     }
 

@@ -9,12 +9,18 @@
     "start": "next start"
   },
   "now": {
-    "aliases": ["adveti.me", "www.adveti.me"]
+    "aliases": [
+      "adveti.me",
+      "www.adveti.me"
+    ]
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "next": "^2.0.0-beta.24"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "^8.6.0"
+  },
   "repository": "git@github.com:agudulin/adveti.me.git",
   "author": "Alexander Gudulin <alexandr.gudulin@gmail.com>",
   "license": "MIT"
