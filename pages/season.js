@@ -21,6 +21,13 @@ class Season extends Component {
             this.props.episodes.map(e => (
               <li key={e.name}>
                 <a href={e.url}>{ e.name }</a>
+                <div>
+                  {
+                    e.videos.map(v => (
+                      <a className='video-link' href={v.url}>{ v.name }</a>
+                    ))
+                  }
+                </div>
               </li>
             ))
           }
@@ -33,6 +40,10 @@ class Season extends Component {
           }
           a:hover {
             color: gray;
+          }
+          .video-link {
+            font-size: .8rem;
+            padding: 0 .5rem 0 0;
           }
         `}</style>
       </Page>
