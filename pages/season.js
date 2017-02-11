@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import 'isomorphic-fetch'
 
+import Page from '../layouts/main'
+
 class Season extends Component {
   static async getInitialProps ({ query: { n } }) {
     return new Promise((resolve, reject) =>
@@ -13,13 +15,27 @@ class Season extends Component {
 
   render () {
     return (
-      <ul>
-        {
-          this.props.episodes.map(e => (
-            <li key={e.name}>{ e.name }, { e.url }</li>
-          ))
-        }
-      </ul>
+      <Page title=''>
+        <ul>
+          {
+            this.props.episodes.map(e => (
+              <li key={e.name}>
+                <a href={e.url}>{ e.name }</a>
+              </li>
+            ))
+          }
+        </ul>
+        <style jsx>{`
+          a {
+            font-size: 1rem;
+            color: white;
+            text-decoration: none;
+          }
+          a:hover {
+            color: gray;
+          }
+        `}</style>
+      </Page>
     )
   }
 }
