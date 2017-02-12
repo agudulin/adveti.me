@@ -1,0 +1,47 @@
+exports[`EpisodesList renders correctly 1`] = `
+<ul
+  data-jsx={3532644266}>
+  <li
+    data-jsx={3532644266}>
+    <img
+      className="poster"
+      data-jsx={3532644266}
+      src="poster-url-1" />
+    <h3
+      data-jsx={3532644266}>
+      episode-name-1
+    </h3>
+    <div
+      className="video-links"
+      data-jsx={3532644266}>
+      <a
+        className="video-links__item"
+        data-jsx={3532644266}
+        href="video-url-1">
+        video-name-1
+      </a>
+    </div>
+  </li>
+  <li
+    data-jsx={3532644266}>
+    <img
+      className="poster"
+      data-jsx={3532644266}
+      src="poster-url-2" />
+    <h3
+      data-jsx={3532644266}>
+      episode-name-1
+    </h3>
+    <div
+      className="video-links"
+      data-jsx={3532644266}>
+      <a
+        className="video-links__item"
+        data-jsx={3532644266}
+        href="video-url-1">
+        video-name-1
+      </a>
+    </div>
+  </li>
+</ul>
+`;
