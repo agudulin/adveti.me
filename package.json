@@ -6,7 +6,8 @@
     "dev": "next",
     "deploy": "now --alias",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "now": {
     "aliases": [
@@ -14,12 +15,32 @@
       "www.adveti.me"
     ]
   },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": ["next/babel"]
+      },
+      "production": {
+        "presets": ["next/babel"]
+      },
+      "test": {
+        "presets": ["es2015", "next/babel"]
+      }
+    }
+  },
+  "standard": {
+    "globals": ["describe", "expect", "it"]
+  },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "next": "^2.0.0-beta.24",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "babel-jest": "^18.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "jest-cli": "^18.1.0",
+    "react-test-renderer": "^15.4.2",
     "standard": "^8.6.0"
   },
   "repository": "git@github.com:agudulin/adveti.me.git",
