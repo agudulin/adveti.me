@@ -1,52 +1,25 @@
 import React, { Component } from 'react'
-import uuid from 'uuid/v4'
 import 'isomorphic-fetch'
 
 import Page from '../layouts/main'
+import EpisodesList from '../components/episodes-list'
 
 class Season extends Component {
-  static async getInitialProps ({ query: { n } }) {
+  static async getInitialProps ({ query: { n: season } }) {
     return new Promise((resolve, reject) =>
-      global.fetch(`https://api.adveti.me/season/${n}`)
+      global.fetch(`https://api.adveti.me/season/${season}`)
         .then(res => res.json())
-        .then(episodes => resolve({ episodes }))
+        .then(episodes => resolve({ episodes, season }))
         .catch(error => reject(`fail: ${error}`))
     )
   }
 
   render () {
+    const { episodes, season } = this.props
+
     return (
-      <Page title=''>
-        <ul>
-          {
-            this.props.episodes.map(e => (
-              <li key={uuid()}>
-                <a href={e.url}>{ e.name }</a>
-                <div>
-                  {
-                    e.videos.map(v => (
-                      <a className='video-link' key={uuid()} href={v.url}>{ v.name }</a>
-                    ))
-                  }
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-        <style jsx>{`
-          a {
-            font-size: 1rem;
-            color: white;
-            text-decoration: none;
-          }
-          a:hover {
-            color: gray;
-          }
-          .video-link {
-            font-size: .8rem;
-            padding: 0 .5rem 0 0;
-          }
-        `}</style>
+      <Page title={`Season ${season}`}>
+        <EpisodesList episodes={episodes} />
       </Page>
     )
   }
