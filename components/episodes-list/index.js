@@ -5,11 +5,8 @@ export default ({ episodes }) => (
   <ul>
     {
       episodes.map(e => (
-        <li key={uuid()} style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.7) 100%), url(${e.poster}) 0 0 no-repeat`,
-          backgroundPosition: 'center',
-          backgroundSize: '200% auto'
-        }}>
+        <li key={uuid()}>
+          <img className='poster' src={e.poster} />
           <h3>{ e.name }</h3>
           <div className='video-links'>
             {
@@ -27,11 +24,25 @@ export default ({ episodes }) => (
         padding: 0;
         list-style: none;
       }
+      li {
+        position: relative;
+        overflow: hidden;
+      }
+      .poster {
+        width: calc(100% + 2rem);
+        margin: -1rem 0 0 -1rem;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .3;
+      }
       h3 {
         margin: 0;
         font-size: 1rem;
         font-weight: bold;
         padding: .75rem 1rem;
+        position: relative;
       }
       a {
         font-size: 1rem;
@@ -42,6 +53,7 @@ export default ({ episodes }) => (
         color: gray;
       }
       .video-links {
+        position: relative;
         padding: .75rem 1rem;
         display: flex;
         flex-direction: column;
@@ -49,6 +61,7 @@ export default ({ episodes }) => (
       .video-links__item {
         font-size: .8rem;
         padding: .5rem 0 0;
+        color: #bbb;
       }
 
       @media (min-width: 480px) {
@@ -60,7 +73,7 @@ export default ({ episodes }) => (
           margin-right: .5rem;
           position: relative;
         }
-        .video-links__item:not(:last-child)::after {
+        .video-links__item:not(:last-child):after {
           content: ',';
           position: absolute;
           right: 0;

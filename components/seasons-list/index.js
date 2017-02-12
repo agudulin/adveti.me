@@ -4,10 +4,11 @@ import Link from 'next/link'
 export default () => (
   <ul>
     {
-      [...Array(8)].map((_, n) => (
+      [...Array(8)].map((_, n) => n + 1).map(n => (
         <li key={n}>
-          <Link href={`/season?n=${n + 1}`}>
-            <a>Season {n + 1}</a>
+          <img className='poster' src={`/static/season-posters/${n}.jpg`} />
+          <Link href={`/season?n=${n}`}>
+            <a>Season {n}</a>
           </Link>
         </li>
       ))
@@ -31,26 +32,39 @@ export default () => (
         min-width: 25%;
         border: 1px solid #222;
         position: relative;
+        overflow: hidden;
+      }
+      .poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: .3;
+        margin-left: -50%;
+        margin-top: -50%;
+        width: 300%;
       }
       a {
         color: white;
         cursor: pointer;
         text-decoration: none;
-        transition: color .1s ease;
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
         height: 100%;
         width: 100%;
+        transition: font-size .1s ease;
       }
       a:hover {
-        color: #333;
+        font-size: 1.75rem;
       }
 
       @media (min-width: 480px) {
         ul {
           flex-direction: row;
+        }
+        li {
+          background-size: 100% auto;
         }
       }
     `}</style>
