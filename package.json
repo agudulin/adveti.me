@@ -18,22 +18,34 @@
   "babel": {
     "env": {
       "development": {
-        "presets": ["next/babel"]
+        "presets": [
+          "next/babel"
+        ]
       },
       "production": {
-        "presets": ["next/babel"]
+        "presets": [
+          "next/babel"
+        ]
       },
       "test": {
-        "presets": ["es2015", "next/babel"]
+        "presets": [
+          "es2015",
+          "next/babel"
+        ]
       }
     }
   },
   "standard": {
-    "globals": ["describe", "expect", "it"]
+    "globals": [
+      "describe",
+      "expect",
+      "it"
+    ]
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
     "next": "^2.0.0-beta.24",
+    "nprogress": "^0.2.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

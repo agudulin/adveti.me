@@ -1,5 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+
+Router.onRouteChangeStart = () => NProgress.start()
+Router.onRouteChangeComplete = () => NProgress.done()
+Router.onRouteChangeError = () => NProgress.done()
 
 export default ({ children, title }) => (
   <div>
@@ -31,6 +37,16 @@ export default ({ children, title }) => (
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         font-size: 1.5rem;
         display: flex;
+      }
+
+      #nprogress .bar {
+        background: white;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
       }
     `}</style>
   </div>
