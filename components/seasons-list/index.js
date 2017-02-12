@@ -6,7 +6,6 @@ export default () => (
     {
       [...Array(8)].map((_, n) => n + 1).map(n => (
         <li key={n}>
-          <img className='poster' src={`/static/season-posters/${n}.jpg`} />
           <Link href={`/season?n=${n}`}>
             <a>Season {n}</a>
           </Link>
@@ -30,9 +29,10 @@ export default () => (
       li {
         flex-grow: 1;
         min-width: 25%;
-        border: 1px solid #222;
+        border: 1px solid #063f79;
         position: relative;
         overflow: hidden;
+        background-color: #1aa0d9;
       }
       .poster {
         position: absolute;
@@ -53,18 +53,15 @@ export default () => (
         position: absolute;
         height: 100%;
         width: 100%;
-        transition: font-size .1s ease;
+        transition: color .1s ease;
       }
       a:hover {
-        font-size: 1.75rem;
+        color: #112349;
       }
 
       @media (min-width: 480px) {
         ul {
           flex-direction: row;
-        }
-        li {
-          background-size: 100% auto;
         }
       }
     `}</style>

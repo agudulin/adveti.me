@@ -12,7 +12,7 @@ export default ({ episodes }) => (
             {
               e.videos.map(v => (
                 <a className='video-links__item' key={uuid()} href={v.url}>{ v.name }</a>
-                ))
+              ))
             }
           </div>
         </li>
@@ -20,11 +20,18 @@ export default ({ episodes }) => (
     }
     <style jsx>{`
       ul {
+        list-style: none;
         margin: 0;
         padding: 0;
-        list-style: none;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
       }
       li {
+        flex-grow: 1;
+        min-width: 50%;
         position: relative;
         overflow: hidden;
       }
@@ -77,6 +84,15 @@ export default ({ episodes }) => (
           content: ',';
           position: absolute;
           right: 0;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        ul {
+          flex-direction: row;
+        }
+        li {
+          padding: 2rem;
         }
       }
     `}</style>
