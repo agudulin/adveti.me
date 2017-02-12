@@ -5,7 +5,11 @@ export default () => (
   <ul>
     {
       [...Array(8)].map((_, n) => (
-        <li key={n}><Link href={`/season?n=${n + 1}`}><a>Season {n + 1}</a></Link></li>
+        <li key={n}>
+          <Link href={`/season?n=${n + 1}`}>
+            <a>Season {n + 1}</a>
+          </Link>
+        </li>
       ))
     }
 
@@ -20,25 +24,34 @@ export default () => (
         height: 100%;
         width: 100%;
         position: absolute;
+        flex-direction: column;
       }
       li {
         flex-grow: 1;
         min-width: 25%;
         border: 1px solid #222;
+        position: relative;
       }
       a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         color: white;
         cursor: pointer;
         text-decoration: none;
-        width: 100%;
-        height: 100%;
         transition: color .1s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
       }
       a:hover {
         color: #333;
+      }
+
+      @media (min-width: 480px) {
+        ul {
+          flex-direction: row;
+        }
       }
     `}</style>
   </ul>

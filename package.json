@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "next": "^2.0.0-beta.24"
+    "next": "^2.0.0-beta.24",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "standard": "^8.6.0"

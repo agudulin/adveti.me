@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid/v4'
 import 'isomorphic-fetch'
 
 import Page from '../layouts/main'
@@ -19,12 +20,12 @@ class Season extends Component {
         <ul>
           {
             this.props.episodes.map(e => (
-              <li key={e.name}>
+              <li key={uuid()}>
                 <a href={e.url}>{ e.name }</a>
                 <div>
                   {
                     e.videos.map(v => (
-                      <a className='video-link' href={v.url}>{ v.name }</a>
+                      <a className='video-link' key={uuid()} href={v.url}>{ v.name }</a>
                     ))
                   }
                 </div>
