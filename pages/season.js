@@ -19,7 +19,7 @@ class Season extends Component {
 
     return (
       <Page title={`Season ${season}`}>
-        <EpisodesList episodes={episodes} />
+        <EpisodesList episodes={episodes} season={season} />
       </Page>
     )
   }

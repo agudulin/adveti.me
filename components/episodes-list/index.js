@@ -1,13 +1,16 @@
 import React from 'react'
 import uuid from 'uuid/v4'
 
-export default ({ episodes }) => (
+export default ({ episodes, season }) => (
   <ul>
     {
       episodes.map(e => (
         <li key={uuid()}>
-          <img className='poster' src={e.poster} />
-          <h3>{ e.name }</h3>
+          <img
+            className='poster'
+            src={`https://api.adveti.me/season/${season}/episode/${e.id}/poster.jpg`}
+          />
+          <h3>{ `${e.id} - ${e.name}` }</h3>
           <div className='video-links'>
             {
               e.videos.map(v => (
