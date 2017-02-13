@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "next",
-    "deploy": "now --alias",
+    "deploy": "now && now alias",
     "build": "next build",
     "start": "next start",
     "test": "jest"
   },
   "now": {
-    "aliases": [
+    "alias": [
       "adveti.me",
       "www.adveti.me"
     ]
