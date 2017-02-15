@@ -1,20 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
+import uuid from 'uuid'
+
+const seasons = [...Array(8)].map((_, n) => n + 1)
 
 export default () => (
-  <ul>
+  <ul className='seasons-list'>
     {
-      [...Array(8)].map((_, n) => n + 1).map(n => (
-        <li key={n}>
+      seasons.map(n =>
+        <li className='seasons-list__item' key={uuid()}>
           <Link href={`/season?n=${n}`}>
-            <a>Season {n}</a>
+            <a className='seasons-list__link'>Season { n }</a>
           </Link>
         </li>
-      ))
+      )
     }
-
     <style jsx>{`
-      ul {
+      .seasons-list {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -26,7 +28,7 @@ export default () => (
         position: absolute;
         flex-direction: column;
       }
-      li {
+      .seasons-list__item {
         flex-grow: 1;
         min-width: 25%;
         border: 1px solid #063f79;
@@ -34,16 +36,7 @@ export default () => (
         overflow: hidden;
         background-color: #1aa0d9;
       }
-      .poster {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: .3;
-        margin-left: -50%;
-        margin-top: -50%;
-        width: 300%;
-      }
-      a {
+      .seasons-list__link {
         color: white;
         cursor: pointer;
         text-decoration: none;
@@ -55,12 +48,12 @@ export default () => (
         width: 100%;
         transition: color .1s ease;
       }
-      a:hover {
+      .seasons-list__link:hover {
         color: #112349;
       }
 
       @media (min-width: 480px) {
-        ul {
+        .seasons-list {
           flex-direction: row;
         }
       }

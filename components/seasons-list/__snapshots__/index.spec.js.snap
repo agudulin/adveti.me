@@ -1,10 +1,13 @@
 exports[`SeasonsList renders correctly 1`] = `
 <ul
-  data-jsx={906213619}>
+  className="seasons-list"
+  data-jsx={3110380898}>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=1"
       onClick={[Function]}>
       Season 
@@ -12,9 +15,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=2"
       onClick={[Function]}>
       Season 
@@ -22,9 +27,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=3"
       onClick={[Function]}>
       Season 
@@ -32,9 +39,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=4"
       onClick={[Function]}>
       Season 
@@ -42,9 +51,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=5"
       onClick={[Function]}>
       Season 
@@ -52,9 +63,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=6"
       onClick={[Function]}>
       Season 
@@ -62,9 +75,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=7"
       onClick={[Function]}>
       Season 
@@ -72,9 +87,11 @@ exports[`SeasonsList renders correctly 1`] = `
     </a>
   </li>
   <li
-    data-jsx={906213619}>
+    className="seasons-list__item"
+    data-jsx={3110380898}>
     <a
-      data-jsx={906213619}
+      className="seasons-list__link"
+      data-jsx={3110380898}
       href="/season?n=8"
       onClick={[Function]}>
       Season 

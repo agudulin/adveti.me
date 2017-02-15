@@ -1,0 +1,18 @@
+exports[`VideoLinks renders correctly 1`] = `
+<div
+  className="video-links"
+  data-jsx={3306389491}>
+  <a
+    className="video-links__item"
+    data-jsx={3306389491}
+    href="video-url-1">
+    video-name-1
+  </a>
+  <a
+    className="video-links__item"
+    data-jsx={3306389491}
+    href="video-url-2">
+    video-name-2
+  </a>
+</div>
+`;
