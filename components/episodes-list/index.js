@@ -8,7 +8,7 @@ export default ({ episodes, season }) => (
         <li key={uuid()}>
           <img
             className='poster'
-            src={`https://api.adveti.me/season/${season}/episode/${e.id}/poster.jpg`}
+            src={e.poster}
           />
           <h3>{ `${e.id} - ${e.name}` }</h3>
           <div className='video-links'>

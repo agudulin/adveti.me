@@ -6,7 +6,7 @@ exports[`EpisodesList renders correctly 1`] = `
     <img
       className="poster"
       data-jsx={3532644266}
-      src="https://api.adveti.me/season/1/episode/01a/poster.jpg" />
+      src="poster-url-1" />
     <h3
       data-jsx={3532644266}>
       01a - episode-name-1
@@ -27,7 +27,7 @@ exports[`EpisodesList renders correctly 1`] = `
     <img
       className="poster"
       data-jsx={3532644266}
-      src="https://api.adveti.me/season/1/episode/01b/poster.jpg" />
+      src="poster-url-2" />
     <h3
       data-jsx={3532644266}>
       01b - episode-name-2
