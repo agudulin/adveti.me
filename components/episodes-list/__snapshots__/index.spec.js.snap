@@ -1,25 +1,25 @@
 exports[`EpisodesList renders correctly 1`] = `
 <ul
   className="episodes-list"
-  data-jsx={604570939}>
+  data-jsx={4219183434}>
   <li
     className="episodes-list__item"
-    data-jsx={604570939}>
+    data-jsx={4219183434}>
     <img
       className="episodes-list__poster"
-      data-jsx={604570939}
+      data-jsx={4219183434}
       src="poster-url-1" />
     <h3
       className="episodes-list__title"
-      data-jsx={604570939}>
+      data-jsx={4219183434}>
       01a - episode-name-1
     </h3>
     <div
       className="video-links"
-      data-jsx={3306389491}>
+      data-jsx={3676989125}>
       <a
         className="video-links__item"
-        data-jsx={3306389491}
+        data-jsx={3676989125}
         href="video-url-1">
         video-name-1
       </a>
@@ -27,22 +27,22 @@ exports[`EpisodesList renders correctly 1`] = `
   </li>
   <li
     className="episodes-list__item"
-    data-jsx={604570939}>
+    data-jsx={4219183434}>
     <img
       className="episodes-list__poster"
-      data-jsx={604570939}
+      data-jsx={4219183434}
       src="poster-url-2" />
     <h3
       className="episodes-list__title"
-      data-jsx={604570939}>
+      data-jsx={4219183434}>
       01b - episode-name-2
     </h3>
     <div
       className="video-links"
-      data-jsx={3306389491}>
+      data-jsx={3676989125}>
       <a
         className="video-links__item"
-        data-jsx={3306389491}
+        data-jsx={3676989125}
         href="video-url-1">
         video-name-1
       </a>
