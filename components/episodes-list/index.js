@@ -2,6 +2,7 @@ import React from 'react'
 import uuid from 'uuid/v4'
 
 import VideoLinks from '../video-links'
+import { media } from '../../styles'
 
 export default ({ episodes, season }) => (
   <ul className='episodes-list'>
@@ -48,7 +49,7 @@ export default ({ episodes, season }) => (
         position: relative;
       }
 
-      @media (min-width: 1200px) {
+      @media (min-width: ${media.desktop}) {
         .episodes-list {
           flex-direction: row;
         }

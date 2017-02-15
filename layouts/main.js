@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 
+import { colors } from '../styles'
+
 Router.onRouteChangeStart = () => NProgress.start()
 Router.onRouteChangeComplete = () => NProgress.done()
 Router.onRouteChangeError = () => NProgress.done()
@@ -32,9 +34,9 @@ export default ({ children, title }) => (
         margin: 0;
       }
       body {
-        background-color: black;
-        color: white;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        background-color: ${colors.bodyBackground};
+        color: ${colors.bodyColor};
+        font-family: -apple-system, "avenir next", "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         font-size: 1.5rem;
         display: flex;
       }

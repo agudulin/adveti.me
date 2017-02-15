@@ -1,6 +1,8 @@
 import React from 'react'
 import uuid from 'uuid/v4'
 
+import { colors, media } from '../../styles'
+
 export default ({ videos }) => (
   <div className='video-links'>
     {
@@ -20,14 +22,14 @@ export default ({ videos }) => (
       .video-links__item {
         font-size: .8rem;
         padding: .5rem 0 0;
-        color: #bbb;
+        color: ${colors.videoLinkItem};
         text-decoration: none;
       }
       .video-links__item:hover {
-        color: gray;
+        color: ${colors.videoLinkItemHover};
       }
 
-      @media (min-width: 480px) {
+      @media (min-width: ${media.mobile}) {
         .video-links {
           flex-direction: row;
         }

@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import uuid from 'uuid'
+import uuid from 'uuid/v4'
+
+import { borders, colors, media } from '../../styles'
 
 const seasons = [...Array(8)].map((_, n) => n + 1)
 
@@ -31,13 +33,15 @@ export default () => (
       .seasons-list__item {
         flex-grow: 1;
         min-width: 25%;
-        border: 1px solid #063f79;
+        border: ${borders.seasonListItem};
         position: relative;
         overflow: hidden;
-        background-color: #1aa0d9;
+        background-color: ${colors.seasonListItem};
       }
       .seasons-list__link {
-        color: white;
+        color: ${colors.seasonListLink};
+        font-size: 1.5rem;
+        font-weight: bold;
         cursor: pointer;
         text-decoration: none;
         display: flex;
@@ -49,12 +53,17 @@ export default () => (
         transition: color .1s ease;
       }
       .seasons-list__link:hover {
-        color: #112349;
+        color: ${colors.seasonListLinkHover};
       }
 
-      @media (min-width: 480px) {
+      @media (min-width: ${media.mobile}) {
         .seasons-list {
           flex-direction: row;
+        }
+      }
+      @media (min-width: ${media.desktop}) {
+        .seasons-list__link {
+          font-size: 2rem;
         }
       }
     `}</style>
