@@ -1,17 +1,20 @@
 exports[`EpisodesList renders correctly 1`] = `
 <ul
   className="episodes-list"
-  data-jsx={4219183434}>
+  data-jsx={2514623687}>
   <li
     className="episodes-list__item"
-    data-jsx={4219183434}>
-    <img
-      className="episodes-list__poster"
-      data-jsx={4219183434}
-      src="poster-url-1" />
+    data-jsx={2514623687}>
+    <div
+      className="lazyload-placeholder"
+      style={
+        Object {
+          "height": "100%",
+        }
+      } />
     <h3
       className="episodes-list__title"
-      data-jsx={4219183434}>
+      data-jsx={2514623687}>
       01a - episode-name-1
     </h3>
     <div
@@ -27,14 +30,17 @@ exports[`EpisodesList renders correctly 1`] = `
   </li>
   <li
     className="episodes-list__item"
-    data-jsx={4219183434}>
-    <img
-      className="episodes-list__poster"
-      data-jsx={4219183434}
-      src="poster-url-2" />
+    data-jsx={2514623687}>
+    <div
+      className="lazyload-placeholder"
+      style={
+        Object {
+          "height": "100%",
+        }
+      } />
     <h3
       className="episodes-list__title"
-      data-jsx={4219183434}>
+      data-jsx={2514623687}>
       01b - episode-name-2
     </h3>
     <div

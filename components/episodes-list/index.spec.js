@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer'
 
 import EpisodesList from './'
 
+jest.mock('react-dom')
+
 const basicProps = {
   season: 1,
   episodes: [{
