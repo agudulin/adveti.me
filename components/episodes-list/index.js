@@ -1,4 +1,5 @@
 import React from 'react'
+import LazyLoad from 'react-lazyload'
 import uuid from 'uuid/v4'
 
 import VideoLinks from '../video-links'
@@ -9,7 +10,9 @@ export default ({ episodes, season }) => (
     {
       episodes.map(({ id, name, poster, videos }) =>
         <li className='episodes-list__item' key={uuid()}>
-          <img className='episodes-list__poster' src={poster} />
+          <LazyLoad height='100%'>
+            <img className='episodes-list__poster' src={poster} />
+          </LazyLoad>
           <h3 className='episodes-list__title'>{ `${id} - ${name}` }</h3>
           <VideoLinks videos={videos} />
         </li>
@@ -33,8 +36,8 @@ export default ({ episodes, season }) => (
         overflow: hidden;
       }
       .episodes-list__poster {
-        width: calc(100% + 2rem);
-        margin: -1rem 0 0 -1rem;
+        width: 120%;
+        margin: -10% 0 0 -10%;
         height: auto;
         position: absolute;
         top: 0;

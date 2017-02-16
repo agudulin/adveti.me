@@ -3377,6 +3377,10 @@ react-hot-loader@3.0.0-beta.6:
     redbox-react "^1.2.5"
     source-map "^0.4.4"
 
+react-lazyload@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-2.2.4.tgz#c7bed08405dd00d6bf4196502c7a7fd71b37d721"
+
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz#4400426bcfa80caa6724c7755695315209fa4b07"

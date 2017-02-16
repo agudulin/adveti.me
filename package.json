@@ -46,6 +46,7 @@
     "isomorphic-fetch": "^2.2.1",
     "next": "^2.0.0-beta.24",
     "nprogress": "^0.2.0",
+    "react-lazyload": "^2.2.4",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
