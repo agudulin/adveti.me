@@ -45,8 +45,10 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "next": "^2.0.0-beta.24",
+    "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-lazyload": "^2.2.4",
     "uuid": "^3.0.1"
   },

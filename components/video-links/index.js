@@ -31,6 +31,9 @@ export default ({ videos }) => (
       .video-links__item:hover {
         color: ${colors.videoLinkItemHover};
       }
+      .video-links__comma {
+        display: none;
+      }
 
       @media (min-width: ${media.mobile}) {
         .video-links {
@@ -41,6 +44,7 @@ export default ({ videos }) => (
           padding-right: .3rem;
         }
         .video-links__comma {
+          display: inline-block;
           color: ${colors.videoLinkItem};
         }
       }
