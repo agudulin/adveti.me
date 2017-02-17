@@ -6,9 +6,12 @@ import { colors, media } from '../../styles'
 export default ({ videos }) => (
   <div className='video-links'>
     {
-      videos.map(({ name, url }) =>
+      videos.map(({ name, url }, i) =>
         <a className='video-links__item' key={uuid()} href={url}>
           { name }
+          { i !== videos.length - 1 &&
+            <span className='video-links__comma'>,</span>
+          }
         </a>
       )
     }
@@ -34,14 +37,11 @@ export default ({ videos }) => (
           flex-direction: row;
         }
         .video-links__item {
-          padding: 0 .3rem 0 0;
-          margin-right: .5rem;
           position: relative;
+          padding-right: .3rem;
         }
-        .video-links__item:not(:last-child):after {
-          content: ',';
-          position: absolute;
-          right: 0;
+        .video-links__comma {
+          color: ${colors.videoLinkItem};
         }
       }
     `}</style>

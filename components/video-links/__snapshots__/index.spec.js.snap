@@ -1,18 +1,36 @@
-exports[`VideoLinks renders correctly 1`] = `
+exports[`VideoLinks renders correctly with lots of video links 1`] = `
 <div
   className="video-links"
-  data-jsx={3676989125}>
+  data-jsx={1308900126}>
   <a
     className="video-links__item"
-    data-jsx={3676989125}
+    data-jsx={1308900126}
     href="video-url-1">
     video-name-1
+    <span
+      className="video-links__comma"
+      data-jsx={1308900126}>
+      ,
+    </span>
   </a>
   <a
     className="video-links__item"
-    data-jsx={3676989125}
+    data-jsx={1308900126}
     href="video-url-2">
     video-name-2
+  </a>
+</div>
+`;
+
+exports[`VideoLinks renders correctly with one video link 1`] = `
+<div
+  className="video-links"
+  data-jsx={1308900126}>
+  <a
+    className="video-links__item"
+    data-jsx={1308900126}
+    href="video-url-1">
+    video-name-1
   </a>
 </div>
 `;

@@ -19,10 +19,10 @@ exports[`EpisodesList renders correctly 1`] = `
     </h3>
     <div
       className="video-links"
-      data-jsx={3676989125}>
+      data-jsx={1308900126}>
       <a
         className="video-links__item"
-        data-jsx={3676989125}
+        data-jsx={1308900126}
         href="video-url-1">
         video-name-1
       </a>
@@ -45,10 +45,10 @@ exports[`EpisodesList renders correctly 1`] = `
     </h3>
     <div
       className="video-links"
-      data-jsx={3676989125}>
+      data-jsx={1308900126}>
       <a
         className="video-links__item"
-        data-jsx={3676989125}
+        data-jsx={1308900126}
         href="video-url-1">
         video-name-1
       </a>
