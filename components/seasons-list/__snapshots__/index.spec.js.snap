@@ -1,99 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`SeasonsList renders correctly 1`] = `
 <ul
   className="seasons-list"
-  data-jsx={3496861343}>
+  data-jsx={3496861343}
+>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=1"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       1
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=2"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       2
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=3"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       3
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=4"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       4
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=5"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       5
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=6"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       6
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=7"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       7
     </a>
   </li>
   <li
     className="seasons-list__item"
-    data-jsx={3496861343}>
+    data-jsx={3496861343}
+  >
     <a
       className="seasons-list__link"
       data-jsx={3496861343}
       href="/season?n=8"
-      onClick={[Function]}>
+      onClick={[Function]}
+    >
       Season 
       8
     </a>

@@ -1,22 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`VideoLinks renders correctly with lots of video links 1`] = `
 <div
   className="video-links"
-  data-jsx={1141445683}>
+  data-jsx={1141445683}
+>
   <a
     className="video-links__item"
     data-jsx={1141445683}
-    href="video-url-1">
+    href="video-url-1"
+  >
     video-name-1
     <span
       className="video-links__comma"
-      data-jsx={1141445683}>
+      data-jsx={1141445683}
+    >
       ,
     </span>
   </a>
   <a
     className="video-links__item"
     data-jsx={1141445683}
-    href="video-url-2">
+    href="video-url-2"
+  >
     video-name-2
   </a>
 </div>
@@ -25,11 +31,13 @@ exports[`VideoLinks renders correctly with lots of video links 1`] = `
 exports[`VideoLinks renders correctly with one video link 1`] = `
 <div
   className="video-links"
-  data-jsx={1141445683}>
+  data-jsx={1141445683}
+>
   <a
     className="video-links__item"
     data-jsx={1141445683}
-    href="video-url-1">
+    href="video-url-1"
+  >
     video-name-1
   </a>
 </div>

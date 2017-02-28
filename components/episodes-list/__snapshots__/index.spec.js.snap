@@ -1,55 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`EpisodesList renders correctly 1`] = `
 <ul
   className="episodes-list"
-  data-jsx={2514623687}>
+  data-jsx={2514623687}
+>
   <li
     className="episodes-list__item"
-    data-jsx={2514623687}>
+    data-jsx={2514623687}
+  >
     <div
       className="lazyload-placeholder"
       style={
         Object {
           "height": "100%",
         }
-      } />
+      }
+    />
     <h3
       className="episodes-list__title"
-      data-jsx={2514623687}>
+      data-jsx={2514623687}
+    >
       01a - episode-name-1
     </h3>
     <div
       className="video-links"
-      data-jsx={1141445683}>
+      data-jsx={1141445683}
+    >
       <a
         className="video-links__item"
         data-jsx={1141445683}
-        href="video-url-1">
+        href="video-url-1"
+      >
         video-name-1
       </a>
     </div>
   </li>
   <li
     className="episodes-list__item"
-    data-jsx={2514623687}>
+    data-jsx={2514623687}
+  >
     <div
       className="lazyload-placeholder"
       style={
         Object {
           "height": "100%",
         }
-      } />
+      }
+    />
     <h3
       className="episodes-list__title"
-      data-jsx={2514623687}>
+      data-jsx={2514623687}
+    >
       01b - episode-name-2
     </h3>
     <div
       className="video-links"
-      data-jsx={1141445683}>
+      data-jsx={1141445683}
+    >
       <a
         className="video-links__item"
         data-jsx={1141445683}
-        href="video-url-1">
+        href="video-url-1"
+      >
         video-name-1
       </a>
     </div>
