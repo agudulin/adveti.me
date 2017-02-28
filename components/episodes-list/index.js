@@ -10,7 +10,7 @@ export default ({ episodes, season }) => (
     {
       episodes.map(({ id, name, poster, videos }) =>
         <li className='episodes-list__item' key={uuid()}>
-          <LazyLoad height='100%'>
+          <LazyLoad height='120%'>
             <img className='episodes-list__poster' src={poster} />
           </LazyLoad>
           <h3 className='episodes-list__title'>{ `${id} - ${name}` }</h3>

@@ -11,7 +11,7 @@ export default () => (
     {
       seasons.map(n =>
         <li className='seasons-list__item' key={uuid()}>
-          <Link href={`/season?n=${n}`}>
+          <Link href={`/season?n=${n}`} prefetch>
             <a className='seasons-list__link'>Season { n }</a>
           </Link>
         </li>
