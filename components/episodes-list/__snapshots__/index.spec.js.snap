@@ -9,13 +9,10 @@ exports[`EpisodesList renders correctly 1`] = `
     className="episodes-list__item"
     data-jsx={2514623687}
   >
-    <div
-      className="lazyload-placeholder"
-      style={
-        Object {
-          "height": "100%",
-        }
-      }
+    <img
+      className="episodes-list__poster"
+      data-jsx={2514623687}
+      src="poster-url-1"
     />
     <h3
       className="episodes-list__title"
@@ -40,13 +37,10 @@ exports[`EpisodesList renders correctly 1`] = `
     className="episodes-list__item"
     data-jsx={2514623687}
   >
-    <div
-      className="lazyload-placeholder"
-      style={
-        Object {
-          "height": "100%",
-        }
-      }
+    <img
+      className="episodes-list__poster"
+      data-jsx={2514623687}
+      src="poster-url-2"
     />
     <h3
       className="episodes-list__title"
