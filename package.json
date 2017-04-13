@@ -47,16 +47,16 @@
     "isomorphic-fetch": "^2.2.1",
     "next": "^2.0.0-beta",
     "nprogress": "^0.2.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
     "uuid": "^3.0.1"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2015": "6.24.1",
     "jest-cli": "^19.0.2",
-    "react-test-renderer": "^15.4.2",
-    "standard": "^8.6.0"
+    "react-test-renderer": "15.5.4",
+    "standard": "10.0.1"
   },
   "repository": "git@github.com:agudulin/adveti.me.git",
   "author": "Alexander Gudulin <alexandr.gudulin@gmail.com>",
